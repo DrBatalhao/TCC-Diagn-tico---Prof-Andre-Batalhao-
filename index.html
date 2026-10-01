@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0D0B1A" id="themeMeta">
+<title>Diagnóstico de Maturidade do TCC | Prof. Dr. André Batalhão</title>
+<meta name="description" content="Diagnóstico de maturidade de TCC em Administração com 24 questões baseadas em literatura de periódicos de topo (ABS 4/4*), assistente Dr. Andrezinho e relatório em PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0D0B1A; --ink2:#17132E; --ink3:#241E45; --paper:#F4F1FA; --mut:#B7B1D6; --mutd:#5B5675;
+  --saf:#FFB81C; --ultra:#3341D1;
+  --page:#0D0B1A; --c:#3341D1; --fg:#fff; --veil:rgba(255,255,255,.14); --vline:rgba(255,255,255,.42);
+  --navh:84px;
+  --sans:'Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;background:var(--page);transition:background-color .5s}
+body{margin:0;font-family:var(--sans);color:var(--fg);background:var(--page);transition:background-color .5s,color .3s;line-height:1.5;font-size:16px;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--saf);outline-offset:2px}
+.wrap{max-width:620px;margin:0 auto;padding:0 20px}
+.hidden{display:none!important}
+.logo-w{filter:invert(1)}
+
+/* topo */
+.top{position:sticky;top:0;z-index:30;background:var(--ink);color:#fff;padding-top:env(safe-area-inset-top)}
+.top .wrap{display:flex;align-items:center;gap:12px;height:54px}
+.top img{width:32px;height:32px}
+.top .ttl{font-weight:700;font-size:15px;line-height:1.1;letter-spacing:-.01em;min-width:0}
+.top .ttl small{display:block;font-weight:500;color:var(--mut);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top .cnt{margin-left:auto;font-weight:700;font-variant-numeric:tabular-nums;font-size:14px;white-space:nowrap}
+.spec{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;padding:0 0 0;align-items:end;height:12px}
+.spec button{border:0;padding:0;height:5px;background:var(--sc);opacity:.32;cursor:pointer;border-radius:3px 3px 0 0;transition:height .25s,opacity .25s}
+.spec button.done{opacity:1}
+.spec button.cur{opacity:1;height:11px}
+.spec.flat button{opacity:1;height:6px;cursor:default}
+
+main{padding:26px 0 calc(var(--navh) + 200px)}
+main.noNav{padding-bottom:230px}
+@keyframes slideIn{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+@keyframes slideBack{from{opacity:0;transform:translateX(-26px)}to{opacity:1;transform:none}}
+.in{animation:slideIn .32s cubic-bezier(.2,.8,.2,1)}
+.inb{animation:slideBack .32s cubic-bezier(.2,.8,.2,1)}
+
+/* intro */
+.ringwrap{position:relative;width:min(280px,72vw);margin:6px 0 20px}
+.ringwrap svg{display:block;width:100%;height:auto;overflow:visible}
+.ringwrap img{position:absolute;left:50%;top:50%;width:46%;transform:translate(-50%,-50%)}
+.arc{fill:none;stroke-width:15;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100;animation:draw .9s cubic-bezier(.3,.7,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+h1.big{font-size:clamp(38px,11vw,60px);line-height:.96;letter-spacing:-.04em;font-weight:800;margin:0 0 16px;max-width:11ch}
+.lead{font-family:var(--serif);font-size:19.5px;line-height:1.5;margin:0 0 22px;color:#E4E0F7;max-width:50ch}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin:0 0 26px;border-top:1px solid rgba(255,255,255,.2);border-bottom:1px solid rgba(255,255,255,.2)}
+.stats div{padding:14px 10px 14px 0}
+.stats div+div{padding-left:14px;border-left:1px solid rgba(255,255,255,.2)}
+.stats b{display:block;font-size:30px;letter-spacing:-.03em;line-height:1;color:var(--saf)}
+.stats span{font-size:13px;color:var(--mut);line-height:1.25;display:block;margin-top:5px}
+.panel{background:var(--paper);color:var(--ink);border-radius:28px;padding:22px 20px 20px}
+.panel h2{margin:0 0 2px;font-size:22px;letter-spacing:-.02em}
+.field{display:block;margin-top:14px}
+.field span{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.field input,.field select{width:100%;border:2px solid #D3CCEA;background:#fff;border-radius:14px;padding:13px 14px;font-size:16px;color:var(--ink)}
+.field input:focus,.field select:focus{border-color:var(--ultra);outline:none;box-shadow:0 0 0 4px rgba(51,65,209,.18)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:2px solid var(--saf);background:var(--saf);color:var(--ink);border-radius:16px;padding:14px 22px;font-weight:800;cursor:pointer;font-size:17px;min-height:54px;letter-spacing:-.01em;transition:transform .15s,background .15s}
+.btn:active{transform:scale(.98)}
+.btn:hover{background:#FFC847;border-color:#FFC847}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn.ghost:hover{background:rgba(255,255,255,.12)}
+.btn.dark{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn.dark:hover{background:var(--ultra);border-color:var(--ultra)}
+.btn[disabled]{opacity:.3;pointer-events:none}
+.btn.block{width:100%;margin-top:18px}
+.fine{font-size:13px;color:var(--mutd);margin:12px 0 0}
+.panel .btn.ghost{color:var(--ink)}
+.panel .btn.ghost:hover{background:rgba(13,11,26,.08)}
+
+/* questao */
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}
+.qhead .pill{min-width:0;flex:0 1 auto}
+.pill{display:inline-block;background:var(--veil);border:1.5px solid var(--vline);color:var(--fg);border-radius:999px;padding:5px 14px;font-size:14px;font-weight:700}
+.qn{font-size:14px;font-weight:700;opacity:.85;font-variant-numeric:tabular-nums;white-space:nowrap;flex:none}
+.qtext{font-size:clamp(25px,6.6vw,34px);line-height:1.1;letter-spacing:-.03em;font-weight:800;margin:0 0 20px}
+.opts{display:grid;gap:9px;margin:0 0 14px;padding:0;border:0}
+.opt{display:grid;grid-template-columns:42px 1fr 22px;gap:12px;align-items:center;text-align:left;background:var(--veil);border:2px solid var(--vline);border-radius:18px;padding:11px 14px 11px 11px;cursor:pointer;width:100%;min-height:62px;color:var(--fg);transition:background .15s,transform .15s,border-color .15s}
+.opt:active{transform:scale(.985)}
+.opt .n{width:42px;height:42px;border-radius:13px;border:2px solid currentColor;display:grid;place-items:center;font-weight:800;font-size:20px}
+.opt b{display:block;font-size:17px;line-height:1.1;letter-spacing:-.01em}
+.opt small{font-size:14px;line-height:1.2;opacity:.85;display:block;margin-top:2px}
+.opt .ck{width:22px;height:22px;border-radius:50%;border:2px solid currentColor;opacity:.5;display:grid;place-items:center;font-size:13px;font-weight:800}
+.opt[aria-checked=true]{background:#fff;border-color:#fff;color:var(--ink)}
+.opt[aria-checked=true] .n{background:var(--c);border-color:var(--c);color:var(--fg)}
+.opt[aria-checked=true] .ck{background:var(--ink);border-color:var(--ink);color:#fff;opacity:1}
+.opt[aria-checked=true] .ck:after{content:"\2713"}
+.ev{font-size:15px;background:rgba(13,11,26,.26);color:#fff;border-radius:16px;padding:12px 15px;margin-bottom:16px}
+.ev b{font-weight:800}
+.why{background:var(--paper);color:var(--ink);border-radius:26px;padding:20px 20px 14px;position:relative;overflow:hidden}
+.why:before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--c)}
+.why h3{margin:0 0 8px;font-size:15.5px;font-weight:800;letter-spacing:-.01em;padding-left:6px}
+.why p{font-family:var(--serif);font-size:17.5px;line-height:1.55;margin:0 0 12px;padding-left:6px}
+.refs{border-top:1.5px solid #DAD3EE;padding:8px 0 0 6px}
+.ref{font-family:var(--serif);font-size:14.5px;line-height:1.42;padding-left:22px;text-indent:-22px;margin:7px 0;color:#2C2745}
+.ref a{color:var(--ultra);overflow-wrap:anywhere;text-decoration:underline;text-underline-offset:2px}
+.abs{display:inline-block;text-indent:0;font-family:var(--sans);font-size:11px;font-weight:800;background:var(--ink);color:#fff;border-radius:5px;padding:1px 6px;margin-left:6px;vertical-align:1px}
+.askbtn{margin-top:14px;display:flex;gap:12px;align-items:center;background:var(--ink);color:#fff;border:0;border-radius:20px;padding:10px 16px 10px 10px;cursor:pointer;width:100%;text-align:left;font-weight:700;font-size:15.5px;line-height:1.2}
+.askbtn svg{width:46px;height:44px;flex:none;border-radius:50%;background:var(--saf)}
+.askbtn small{font-weight:500;color:var(--mut);font-size:13px}
+
+/* navegacao */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--ink);padding:12px 0 calc(12px + env(safe-area-inset-bottom))}
+.nav .wrap{display:flex;gap:10px}
+.nav .btn{flex:1;color:var(--ink)}
+.nav .btn.ghost{flex:0 0 auto;color:#fff}
+.nav .btn.pulse{animation:pulse 1.2s ease-out 2}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,184,28,.7)}100%{box-shadow:0 0 0 16px rgba(255,184,28,0)}}
+
+/* resultado */
+.rtitle{font-size:clamp(34px,10vw,52px);line-height:.98;letter-spacing:-.04em;margin:2px 0 6px;font-weight:800}
+.sub{color:var(--mut);font-size:14.5px;margin:0 0 6px}
+.rosette{display:block;width:100%;max-width:460px;height:auto;margin:6px auto 0}
+.level{font-size:26px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:2px 0 6px}
+.levelp{font-family:var(--serif);font-size:18px;line-height:1.45;color:#E4E0F7;margin:0 0 4px}
+.sec{margin-top:30px}
+.sec h2{font-size:24px;letter-spacing:-.03em;margin:0 0 12px;font-weight:800}
+.tile{border-radius:24px;padding:16px 18px 16px;margin-bottom:10px;background:var(--c);color:var(--fg);display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:start}
+.tile .pct{font-size:46px;font-weight:800;letter-spacing:-.05em;line-height:.95;grid-row:span 2;font-variant-numeric:tabular-nums}
+.tile h3{margin:2px 0 0;font-size:18px;letter-spacing:-.02em;line-height:1.1}
+.tile .mt{height:9px;border-radius:5px;background:rgba(0,0,0,.2);overflow:hidden;margin:7px 0 0}
+.tile .mt i{display:block;height:100%;background:var(--fg);border-radius:5px}
+.tile p{grid-column:1/-1;margin:10px 0 0;font-family:var(--serif);font-size:17px;line-height:1.45}
+.duo{display:grid;gap:10px}
+.note{background:var(--ink2);border-radius:20px;padding:14px 16px}
+.note b{display:block;font-size:14px;color:var(--saf);margin-bottom:2px}
+.note span{font-family:var(--serif);font-size:17px}
+.tl{position:relative;padding-left:26px;border-left:3px solid var(--ink3);margin-left:8px}
+.week{position:relative;margin-bottom:16px}
+.week:before{content:"";position:absolute;left:-36px;top:3px;width:18px;height:18px;border-radius:50%;background:var(--saf);border:4px solid var(--page)}
+.week h3{margin:0;font-size:19px;letter-spacing:-.02em}
+.week small{color:var(--mut);font-size:14px}
+.week ul{list-style:none;margin:8px 0 0;padding:0}
+.week li{background:var(--ink2);border-radius:14px;padding:10px 13px;margin-bottom:7px;font-family:var(--serif);font-size:16.5px;line-height:1.42;border-left:6px solid var(--lc,#fff)}
+.refpanel{background:var(--paper);color:var(--ink);border-radius:24px;padding:16px 18px}
+.refpanel .fine{color:var(--mutd)}
+.pdfbar{position:sticky;bottom:calc(12px + env(safe-area-inset-bottom));z-index:20;margin-top:22px}
+.pdfbar .btn{width:100%;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+.sig{margin-top:26px;text-align:center;font-size:13px;color:var(--mut)}
+
+/* professor */
+#prof{position:fixed;left:0;bottom:calc(var(--navh) + 6px + env(safe-area-inset-bottom));width:84px;z-index:40;transform:translateX(12px);cursor:pointer;touch-action:manipulation}
+#prof.walking{pointer-events:none}
+#prof.noNavPos{bottom:calc(16px + env(safe-area-inset-bottom))}
+#prof .flip{transform-origin:50% 100%;transition:transform .25s}
+#prof .inner{animation:float 3.4s ease-in-out infinite}
+#prof.walking .inner{animation:none}
+#prof .tag2{position:absolute;left:50%;bottom:-3px;transform:translateX(-50%);background:#fff;color:var(--ink);font-size:11px;font-weight:800;padding:2px 9px;border-radius:999px;white-space:nowrap;pointer-events:none}
+.prof-svg{display:block;width:84px;height:auto;overflow:visible}
+.bub{position:absolute;bottom:calc(100% + 8px);left:50%;width:max-content;max-width:min(250px,calc(100vw - 24px));background:#fff;color:var(--ink);border-radius:18px;padding:10px 14px;font-size:15px;line-height:1.3;font-weight:600;opacity:0;transform:translate(-50%,6px) scale(.96);transition:opacity .2s,transform .2s;pointer-events:none;--tail:50%;box-shadow:0 6px 22px rgba(0,0,0,.35)}
+.bub.on{opacity:1}
+.bub:after{content:"";position:absolute;top:100%;left:var(--tail);margin-left:-7px;border:7px solid transparent;border-top-color:#fff}
+.legL,.legR{transform-origin:50px 100px}
+.armL{transform-origin:30px 60px}.armR{transform-origin:70px 60px}
+.eye{transform-box:fill-box;transform-origin:center;animation:blink 5s infinite}
+.mouth{transform-box:fill-box;transform-origin:center}
+#prof.walking .legL{animation:stepA .4s ease-in-out infinite alternate}
+#prof.walking .legR{animation:stepA .4s ease-in-out infinite alternate-reverse}
+#prof.walking .armL{animation:armS .4s ease-in-out infinite alternate-reverse}
+#prof.walking .torso{animation:bob .2s ease-in-out infinite alternate}
+#prof.hello .armR{animation:wave .45s ease-in-out 6 alternate}
+#prof.talk .mouth{animation:talk .22s ease-in-out infinite alternate}
+#prof.hop .inner{animation:hop .5s ease-out 1}
+@keyframes float{50%{transform:translateY(-4px)}}
+@keyframes stepA{from{transform:rotate(-22deg)}to{transform:rotate(22deg)}}
+@keyframes armS{from{transform:rotate(-16deg)}to{transform:rotate(16deg)}}
+@keyframes bob{to{transform:translateY(-2px)}}
+@keyframes wave{from{transform:rotate(-135deg)}to{transform:rotate(-165deg)}}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+@keyframes talk{to{transform:scaleY(1.7)}}
+@keyframes hop{30%{transform:translateY(-22px)}60%{transform:translateY(0)}78%{transform:translateY(-7px)}}
+
+/* chat */
+.scrim{position:fixed;inset:0;background:rgba(5,4,14,.6);z-index:60;opacity:0;pointer-events:none;transition:opacity .25s}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:50%;bottom:0;z-index:61;width:100%;max-width:600px;height:min(82vh,700px);background:var(--ink2);color:#fff;border-radius:28px 28px 0 0;display:flex;flex-direction:column;transform:translate(-50%,105%);visibility:hidden;transition:transform .32s cubic-bezier(.2,.8,.2,1),visibility 0s .32s;padding-bottom:env(safe-area-inset-bottom)}
+.sheet.on{transform:translate(-50%,0);visibility:visible;transition:transform .32s cubic-bezier(.2,.8,.2,1),visibility 0s}
+.sh{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--ink);border-radius:28px 28px 0 0}
+.sh svg{width:48px;height:46px;flex:none;background:var(--saf);border-radius:50%}
+.sh b{display:block;font-size:18px;line-height:1.1;letter-spacing:-.01em}
+.sh span{font-size:12.5px;color:var(--mut)}
+.sh button{margin-left:auto;border:2px solid rgba(255,255,255,.4);background:transparent;color:#fff;border-radius:50%;width:40px;height:40px;font-size:22px;cursor:pointer;line-height:1}
+.msgs{flex:1;overflow:auto;padding:14px 16px;display:flex;flex-direction:column;gap:10px;overscroll-behavior:contain}
+.m{max-width:88%;padding:11px 14px;border-radius:20px;font-size:15.5px;line-height:1.42}
+.m.bot{background:var(--paper);color:var(--ink);border-bottom-left-radius:6px;align-self:flex-start}
+.m.me{background:var(--saf);color:var(--ink);font-weight:600;border-bottom-right-radius:6px;align-self:flex-end}
+.m p{margin:0 0 6px}.m p:last-child{margin:0}
+.m ul{margin:4px 0;padding-left:18px}
+.m .rf{font-family:var(--serif);font-size:14.5px;margin:5px 0}
+.m a{color:var(--ultra)}
+.ctx{align-self:center;font-size:12.5px;font-weight:700;color:var(--mut);background:var(--ink3);border-radius:999px;padding:3px 12px}
+.typing{display:flex;gap:4px;padding:13px 15px}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--ink);animation:dot 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes dot{50%{transform:translateY(-4px);opacity:.4}}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:8px 16px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1.5px solid rgba(255,255,255,.4);background:transparent;color:#fff;border-radius:999px;padding:8px 14px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap}
+.chip:hover{background:var(--saf);border-color:var(--saf);color:var(--ink)}
+.inp{display:flex;gap:8px;padding:8px 16px 14px}
+.inp input{flex:1;border:2px solid rgba(255,255,255,.3);border-radius:999px;padding:12px 18px;background:var(--ink);color:#fff;font-size:16px;min-width:0}
+.inp input:focus{border-color:var(--saf);outline:none}
+.inp button{border:0;background:var(--saf);color:var(--ink);border-radius:50%;width:48px;height:48px;font-size:20px;cursor:pointer;flex:none;font-weight:800}
+
+.toast{position:fixed;left:50%;bottom:calc(var(--navh) + 22px);transform:translateX(-50%);background:var(--saf);color:var(--ink);padding:11px 18px;border-radius:999px;font-size:14.5px;font-weight:700;z-index:90;opacity:0;pointer-events:none;transition:opacity .25s;max-width:90vw;text-align:center}
+.toast.on{opacity:1}
+
+@media (min-width:700px){ main{padding-top:40px} }
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .arc{stroke-dashoffset:0}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<header class="top hidden" id="top">
+  <div class="wrap">
+    <img class="logo-w" data-logo alt="Logo AB">
+    <div class="ttl">Diagnóstico do TCC<small id="topSub">Prof. Dr. André Batalhão</small></div>
+    <div class="cnt" id="cnt"></div>
+  </div>
+  <div class="spec" id="spec"></div>
+</header>
+
+<main id="main"><div class="wrap" id="view"></div></main>
+
+<nav class="nav hidden" id="nav"><div class="wrap">
+  <button class="btn ghost" id="bPrev" aria-label="Questão anterior">Voltar</button>
+  <button class="btn" id="bNext">Próxima</button>
+</div></nav>
+
+<div id="prof" role="button" tabindex="0" aria-label="Abrir conversa com o Dr. Andrezinho, orientador virtual">
+  <div class="bub" id="bub" role="status" aria-live="polite"></div>
+  <div class="flip" id="flip"><div class="inner" id="profInner"></div></div>
+  <span class="tag2">Dr. Andrezinho</span>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<section class="sheet" id="sheet" role="dialog" aria-label="Conversa com o Dr. Andrezinho" aria-hidden="true">
+  <div class="sh">
+    <div id="avatar"></div>
+    <div><b>Dr. Andrezinho</b><span>Orientador virtual de TCC em Administração</span></div>
+    <button id="closeChat" aria-label="Fechar conversa">×</button>
+  </div>
+  <div class="msgs" id="msgs" aria-live="polite"></div>
+  <div class="chips" id="chips"></div>
+  <form class="inp" id="chatForm" autocomplete="off">
+    <input id="chatIn" type="text" placeholder="Pergunte ao Dr. Andrezinho..." aria-label="Sua mensagem">
+    <button type="submit" aria-label="Enviar">&#10148;</button>
+  </form>
+</section>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+/* =========================================================
+   CONFIGURAÇÃO
+   AI_ENDPOINT: opcional. Se você tiver um proxy seguro (ex.: Cloudflare Worker)
+   que receba {pergunta, contexto} e devolva {resposta}, coloque a URL aqui.
+   NUNCA coloque chaves de API neste arquivo: o GitHub é público.
+   ========================================================= */
+const CONFIG = { AI_ENDPOINT: "", PROFESSOR: "Prof. Dr. André Batalhão" };
+const LOGO = "data:image/png;base64,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";
+
+/* ---------- Referências (APA 7) ---------- */
+const REF = {
+ alvesson2011:{c:"Alvesson & Sandberg, 2011",top:1,a:"Alvesson, M., & Sandberg, J. (2011). Generating research questions through problematization. ",j:"Academy of Management Review",v:", 36(2), 247–271.",d:"10.5465/AMR.2011.59330882"},
+ locke1997:{c:"Locke & Golden-Biddle, 1997",top:1,a:"Locke, K., & Golden-Biddle, K. (1997). Constructing opportunities for contribution: Structuring intertextual coherence and “problematizing” in organizational studies. ",j:"Academy of Management Journal",v:", 40(5), 1023–1062.",d:"10.5465/256926"},
+ grant2011:{c:"Grant & Pollock, 2011",top:1,a:"Grant, A. M., & Pollock, T. G. (2011). Publishing in AMJ—Part 3: Setting the hook. ",j:"Academy of Management Journal",v:", 54(5), 873–879.",d:"10.5465/amj.2011.4000"},
+ whetten1989:{c:"Whetten, 1989",top:1,a:"Whetten, D. A. (1989). What constitutes a theoretical contribution? ",j:"Academy of Management Review",v:", 14(4), 490–495.",d:"10.5465/amr.1989.4308371"},
+ corley2011:{c:"Corley & Gioia, 2011",top:1,a:"Corley, K. G., & Gioia, D. A. (2011). Building theory about theory building: What constitutes a theoretical contribution? ",j:"Academy of Management Review",v:", 36(1), 12–32.",d:"10.5465/amr.2009.0486"},
+ sutton1995:{c:"Sutton & Staw, 1995",top:1,a:"Sutton, R. I., & Staw, B. M. (1995). What theory is not. ",j:"Administrative Science Quarterly",v:", 40(3), 371–384.",d:"10.2307/2393788"},
+ colquitt2007:{c:"Colquitt & Zapata-Phelan, 2007",top:1,a:"Colquitt, J. A., & Zapata-Phelan, C. P. (2007). Trends in theory building and theory testing: A five-decade study of the Academy of Management Journal. ",j:"Academy of Management Journal",v:", 50(6), 1281–1303.",d:"10.5465/amj.2007.28165855"},
+ bacharach1989:{c:"Bacharach, 1989",top:1,a:"Bacharach, S. B. (1989). Organizational theories: Some criteria for evaluation. ",j:"Academy of Management Review",v:", 14(4), 496–515.",d:"10.5465/amr.1989.4308374"},
+ webster2002:{c:"Webster & Watson, 2002",top:1,a:"Webster, J., & Watson, R. T. (2002). Analyzing the past to prepare for the future: Writing a literature review. ",j:"MIS Quarterly",v:", 26(2), xiii–xxiii.",d:"10.2307/4132319"},
+ tranfield2003:{c:"Tranfield et al., 2003",top:1,a:"Tranfield, D., Denyer, D., & Smart, P. (2003). Towards a methodology for developing evidence-informed management knowledge by means of systematic review. ",j:"British Journal of Management",v:", 14(3), 207–222.",d:"10.1111/1467-8551.00375"},
+ abs2021:{c:"Chartered ABS, 2021",a:"Chartered Association of Business Schools. (2021). ",j:"Academic journal guide 2021",v:". https://charteredabs.org/academic-journal-guide-2021/"},
+ antonakis2010:{c:"Antonakis et al., 2010",top:1,a:"Antonakis, J., Bendahan, S., Jacquart, P., & Lalive, R. (2010). On making causal claims: A review and recommendations. ",j:"The Leadership Quarterly",v:", 21(6), 1086–1120.",d:"10.1016/j.leaqua.2010.10.010"},
+ bono2011:{c:"Bono & McNamara, 2011",top:1,a:"Bono, J. E., & McNamara, G. (2011). Publishing in AMJ—Part 2: Research design. ",j:"Academy of Management Journal",v:", 54(4), 657–660.",d:"10.5465/AMJ.2011.64869103"},
+ edmondson2007:{c:"Edmondson & McManus, 2007",top:1,a:"Edmondson, A. C., & McManus, S. E. (2007). Methodological fit in management field research. ",j:"Academy of Management Review",v:", 32(4), 1155–1179.",d:"10.5465/amr.2007.26586086"},
+ eisenhardt1989:{c:"Eisenhardt, 1989",top:1,a:"Eisenhardt, K. M. (1989). Building theories from case study research. ",j:"Academy of Management Review",v:", 14(4), 532–550.",d:"10.2307/258557"},
+ hair2019:{c:"Hair et al., 2019",a:"Hair, J. F., Risher, J. J., Sarstedt, M., & Ringle, C. M. (2019). When to use and how to report the results of PLS-SEM. ",j:"European Business Review",v:", 31(1), 2–24.",d:"10.1108/EBR-11-2018-0203"},
+ podsakoff2003:{c:"Podsakoff et al., 2003",top:1,a:"Podsakoff, P. M., MacKenzie, S. B., Lee, J.-Y., & Podsakoff, N. P. (2003). Common method biases in behavioral research: A critical review of the literature and recommended remedies. ",j:"Journal of Applied Psychology",v:", 88(5), 879–903.",d:"10.1037/0021-9010.88.5.879"},
+ podsakoff2012:{c:"Podsakoff et al., 2012",a:"Podsakoff, P. M., MacKenzie, S. B., & Podsakoff, N. P. (2012). Sources of method bias in social science research and recommendations on how to control it. ",j:"Annual Review of Psychology",v:", 63, 539–569.",d:"10.1146/annurev-psych-120710-100452"},
+ hinkin1998:{c:"Hinkin, 1998",top:1,a:"Hinkin, T. R. (1998). A brief tutorial on the development of measures for use in survey questionnaires. ",j:"Organizational Research Methods",v:", 1(1), 104–121.",d:"10.1177/109442819800100106"},
+ fornell1981:{c:"Fornell & Larcker, 1981",top:1,a:"Fornell, C., & Larcker, D. F. (1981). Evaluating structural equation models with unobservable variables and measurement error. ",j:"Journal of Marketing Research",v:", 18(1), 39–50.",d:"10.2307/3151312"},
+ gioia2013:{c:"Gioia et al., 2013",top:1,a:"Gioia, D. A., Corley, K. G., & Hamilton, A. L. (2013). Seeking qualitative rigor in inductive research: Notes on the Gioia methodology. ",j:"Organizational Research Methods",v:", 16(1), 15–31.",d:"10.1177/1094428112452151"},
+ aguinis2013:{c:"Aguinis et al., 2013",top:1,a:"Aguinis, H., Gottfredson, R. K., & Joo, H. (2013). Best-practice recommendations for defining, identifying, and handling outliers. ",j:"Organizational Research Methods",v:", 16(2), 270–301.",d:"10.1177/1094428112470848"},
+ aguinis2018:{c:"Aguinis et al., 2018",a:"Aguinis, H., Ramani, R. S., & Alabduljader, N. (2018). What you see is what you get? Enhancing methodological transparency in management research. ",j:"Academy of Management Annals",v:", 12(1), 83–110.",d:"10.5465/annals.2016.0011"},
+ aguinis2019:{c:"Aguinis & Solarino, 2019",top:1,a:"Aguinis, H., & Solarino, A. M. (2019). Transparency and replicability in qualitative research: The case of interviews with elite informants. ",j:"Strategic Management Journal",v:", 40(8), 1291–1315.",d:"10.1002/smj.3015"},
+ pratt2009:{c:"Pratt, 2009",top:1,a:"Pratt, M. G. (2009). For the lack of a boilerplate: Tips on writing up (and reviewing) qualitative research. ",j:"Academy of Management Journal",v:", 52(5), 856–862.",d:"10.5465/AMJ.2009.44632557"},
+ bell2007:{c:"Bell & Bryman, 2007",top:1,a:"Bell, E., & Bryman, A. (2007). The ethics of management research: An exploratory content analysis. ",j:"British Journal of Management",v:", 18(1), 63–77.",d:"10.1111/j.1467-8551.2006.00487.x"},
+ apa2020:{c:"American Psychological Association, 2020",a:"American Psychological Association. (2020). ",j:"Publication manual of the American Psychological Association",v:" (7th ed.). https://doi.org/10.1037/0000165-000"},
+ lgpd2018:{c:"Brasil, 2018",a:"Brasil. (2018). ",j:"Lei nº 13.709, de 14 de agosto de 2018: Lei Geral de Proteção de Dados Pessoais (LGPD)",v:". Diário Oficial da União."},
+ cns2016:{c:"Conselho Nacional de Saúde, 2016",a:"Conselho Nacional de Saúde. (2016). ",j:"Resolução nº 510, de 7 de abril de 2016: Normas aplicáveis a pesquisas em Ciências Humanas e Sociais",v:". Ministério da Saúde."}
+};
+
+/* ---------- Dimensões ---------- */
+const DIMS = [
+ {n:"Problema e lacuna",s:"Problema",tip:"Pense em uma pergunta que caiba em uma única frase.",
+  lo:"O problema ainda está difuso. Sem pergunta delimitada e lacuna evidente, todo o restante do TCC fica instável. Resolva esta base primeiro.",
+  mid:"Há uma boa base, mas a lacuna precisa de mais evidência recente e a pergunta, de maior delimitação.",
+  hi:"Problema e lacuna estão sólidos e já oferecem um bom “gancho” para a introdução."},
+ {n:"Contribuição teórica",s:"Contribuição",tip:"Contribuição é o que muda no conhecimento, não o que você fez.",
+  lo:"Ainda não está claro o que o trabalho acrescenta. Defina a teoria-base e escreva a contribuição em duas frases.",
+  mid:"A contribuição existe, mas precisa ser mais específica e ligada a uma teoria e a condições de contorno.",
+  hi:"Contribuição bem articulada. Agora, garanta que ela apareça nos resultados e na discussão."},
+ {n:"Revisão de literatura",s:"Revisão",tip:"Organize por conceitos, não por autores.",
+  lo:"A revisão carece de método e de fontes de topo. Estruture a busca e priorize periódicos ABS 3–4*.",
+  mid:"A base é razoável; falta sintetizar por conceitos e reforçar fontes de alto impacto.",
+  hi:"Revisão estruturada e analítica. Mantenha o protocolo de busca documentado."},
+ {n:"Modelo teórico e hipóteses",s:"Modelo",tip:"Cada seta do modelo precisa de um “porquê”.",
+  lo:"Falta um modelo explícito. Sem ele, hipóteses e análise ficam desconectadas.",
+  mid:"Modelo e hipóteses estão esboçados. Reforce o “porquê” de cada relação e considere explicações rivais.",
+  hi:"Modelo coerente e testável, com lógica teórica clara."},
+ {n:"Desenho e métodos",s:"Métodos",tip:"O método serve à pergunta, nunca o contrário.",
+  lo:"Método, amostra e controle de vieses ainda não estão decididos ou justificados.",
+  mid:"O método é plausível. Justifique o ajuste à pergunta e detalhe amostra e controle de vieses.",
+  hi:"Desenho metodológico robusto e bem justificado."},
+ {n:"Dados e análise",s:"Dados",tip:"Defina a análise antes de coletar.",
+  lo:"Instrumentos, validade e técnica de análise precisam ser definidos antes da coleta.",
+  mid:"Há plano de coleta e análise. Falta evidenciar validade/rigor e tratar pressupostos e outliers.",
+  hi:"Plano analítico maduro, com atenção a validade e rigor."},
+ {n:"Ética e transparência",s:"Ética",tip:"Ética e documentação evitam retrabalho na banca.",
+  lo:"Ética, proteção de dados e documentação são lacunas críticas e podem impedir a coleta.",
+  mid:"Bom início. Formalize TCLE/comitê de ética, LGPD e a documentação para replicação.",
+  hi:"Boas práticas de integridade e transparência."},
+ {n:"Discussão e escrita",s:"Discussão",tip:"Discuta resultados com a teoria, não só com os números.",
+  lo:"Discussão, implicações e escrita ainda não foram planejadas. Comece por um esqueleto do texto.",
+  mid:"Estrutura parcial. Reforce o diálogo com a literatura, as implicações específicas e a revisão do texto.",
+  hi:"Pronto para uma redação de alto nível. Invista em leitura crítica de colegas e orientador."}
+];
+
+/* ---------- Questões ---------- */
+const Q = [
+{d:0,q:"Minha pergunta de pesquisa é clara, delimitada (contexto e unidade de análise) e relevante para a teoria ou a prática de Administração.",
+ ev:"Uma única pergunta, em frase interrogativa, com fenômeno, contexto e relação esperada; relevância justificada em um parágrafo.",
+ why:"Estudos publicados em periódicos de topo partem de problemas que desafiam pressupostos da literatura, e não de temas amplos; uma pergunta delimitada orienta cada decisão posterior (Alvesson & Sandberg, 2011). A relevância deve ser demonstrada logo na introdução (Grant & Pollock, 2011).",
+ ex:"“Como a adoção do Pix altera a gestão de capital de giro de microvarejistas?” traz fenômeno, contexto e relação esperada.",
+ er:"Confundir tema (“marketing digital”) com problema, ou formular perguntas de sim/não que não geram explicação.",
+ ac:"Reescreva o problema em uma única frase interrogativa contendo fenômeno + contexto + relação esperada e valide com seu orientador.",
+ r:["alvesson2011","grant2011"]},
+{d:0,q:"Identifiquei e documentei a lacuna da literatura (o que não se sabe ou é controverso) com base em estudos recentes.",
+ ev:"Lacuna sustentada por vários estudos recentes e escrita como contraste: “a literatura mostra X, mas pouco se sabe sobre Y”.",
+ why:"Lacuna não é “ninguém estudou isso”: é a problematização de pressupostos ou de tensões na literatura existente (Alvesson & Sandberg, 2011). Introduções fortes constroem coerência entre estudos prévios e a oportunidade de contribuição (Locke & Golden-Biddle, 1997).",
+ ex:"“Estudos assumem que X leva a Y (A, 2019; B, 2021), mas ignoram o papel de Z em contextos emergentes.”",
+ er:"Afirmar que “não há estudos” sem uma busca sistemática que comprove.",
+ ac:"Monte uma tabela com 8 a 10 artigos recentes: o que cada um mostra e o que deixa de fora. A lacuna nasce da coluna “deixa de fora”.",
+ r:["alvesson2011","locke1997"]},
+{d:0,q:"Meus objetivos (geral e específicos) e minha justificativa estão alinhados à pergunta e mostram por que o estudo importa agora.",
+ ev:"Objetivos com verbos observáveis, em correspondência direta com a pergunta; justificativa com relevância teórica, prática e atualidade.",
+ why:"O alinhamento entre pergunta, objetivos e método é um critério de coerência interna avaliado por bancas e revisores; a introdução deve “fisgar” o leitor com relevância e consequência (Grant & Pollock, 2011).",
+ ex:"Geral: analisar o efeito de X sobre Y. Específicos: (a) mensurar X; (b) testar a relação X–Y; (c) comparar por porte de empresa.",
+ er:"Verbos vagos (“conhecer”, “entender”) e mais de cinco objetivos específicos, que dispersam o estudo.",
+ ac:"Reduza a 3 ou 4 objetivos específicos, cada um respondendo a uma parte da pergunta, com verbo observável (mensurar, testar, comparar).",
+ r:["grant2011","locke1997"]},
+{d:1,q:"Consigo explicar, em duas frases, qual é a minha contribuição (o que muda no conhecimento ou na prática).",
+ ev:"Contribuição específica, distinta de replicação descritiva e diretamente ligada à lacuna identificada.",
+ why:"A contribuição teórica é o critério central de avaliação nos melhores periódicos: ela explica o que (construtos), como (relações), por quê (lógica) e quem, onde e quando (condições) (Whetten, 1989; Corley & Gioia, 2011).",
+ ex:"“Mostro que a relação X→Y é mediada por Z e que ela se inverte em empresas familiares.”",
+ er:"Listar resultados como contribuição, ou dizer que a contribuição é “analisar a empresa A”.",
+ ac:"Use o modelo: “Ao [fazer], mostro que [achado], o que [estende/contesta] a visão de [teoria ou autores].”",
+ r:["whetten1989","corley2011"]},
+{d:1,q:"Meu estudo está ancorado em uma teoria ou modelo conceitual reconhecido, e não apenas em conceitos soltos.",
+ ev:"Teoria nomeada, com construtos e pressupostos explicitados e uma lógica do “por quê” que sustenta as relações.",
+ why:"Teoria não é lista de referências, dados, listas de variáveis ou figuras; é uma explicação de por que fenômenos se relacionam (Sutton & Staw, 1995). Sistemas de construtos e proposições são o núcleo de uma teoria (Bacharach, 1989).",
+ ex:"“Com base na Teoria da Agência, esperamos que a assimetria de informação aumente os custos de monitoramento.”",
+ er:"Citar a teoria no título e nunca mais usá-la na hipótese, na análise ou na discussão.",
+ ac:"Escolha uma teoria principal e escreva um parágrafo com seus construtos, pressupostos e a explicação de por que X afeta Y.",
+ r:["sutton1995","bacharach1989"]},
+{d:1,q:"Defini com clareza os construtos centrais e os limites de aplicação (onde, quando e para quem a explicação vale).",
+ ev:"Definições conceituais com fonte, mais condições de contorno declaradas e discutidas.",
+ why:"Delimitar o que está dentro do modelo e em que contextos ele se aplica é parte da construção teórica (Whetten, 1989) e dos critérios de avaliação de teorias, como precisão e generalidade (Bacharach, 1989).",
+ ex:"“Entendo inovação aberta como [definição] (Autor, ano); o estudo aplica-se a PMEs industriais do Sul do Brasil.”",
+ er:"Usar o mesmo termo com significados distintos ao longo do texto, sem definição formal.",
+ ac:"Crie um glossário: construto, definição conceitual, fonte e como será medido ou identificado empiricamente.",
+ r:["whetten1989","bacharach1989"]},
+{d:2,q:"Realizei busca estruturada em bases científicas (ex.: Scopus, Web of Science), com termos, filtros e critérios de seleção registrados.",
+ ev:"Protocolo reproduzível: bases, strings de busca, período, critérios de inclusão e exclusão e número de estudos em cada etapa.",
+ why:"Revisões baseadas em protocolo reduzem vieses e aumentam a transparência e a replicabilidade do conhecimento reunido (Tranfield et al., 2003). Boas revisões também seguem citações para trás e para frente (Webster & Watson, 2002).",
+ ex:"“Scopus e Web of Science, 2010–2025, (“open innovation” AND SME*): 312 registros e 64 artigos após critérios.”",
+ er:"Buscar apenas no Google Acadêmico, sem registrar termos e critérios.",
+ ac:"Registre em planilha a string, as bases e os critérios; refaça a busca com sinônimos e siga as referências dos artigos-chave.",
+ r:["tranfield2003","webster2002"]},
+{d:2,q:"Minha revisão prioriza artigos de periódicos de alto impacto (ex.: ABS 3–4*, FT50, Qualis A1/A2) e trabalhos seminais.",
+ ev:"Núcleo de referências em periódicos de topo, com clássicos e predomínio de estudos recentes.",
+ why:"A qualidade das fontes sustenta a credibilidade do argumento. O Academic Journal Guide classifica periódicos de negócios e gestão em níveis, e os de nível 4 e 4* concentram a fronteira do conhecimento (Chartered Association of Business Schools [ABS], 2021). Revisões fortes combinam trabalhos seminais e recentes (Webster & Watson, 2002).",
+ ex:"Das 40 referências, 25 estão em periódicos ABS 3 ou superior, e 60% foram publicadas nos últimos dez anos.",
+ er:"Excesso de citações secundárias (“apud”), sites e blogs como base do argumento.",
+ ac:"Verifique cada fonte no Academic Journal Guide ou no Qualis e substitua blogs e sites por artigos revisados por pares.",
+ r:["abs2021","webster2002"]},
+{d:2,q:"Minha revisão é analítica e organizada por conceitos e debates, e não um resumo de autor por autor.",
+ ev:"Seções por conceito, sínteses críticas, matriz conceito × autor e fechamento que conduz à lacuna.",
+ why:"Uma revisão de qualidade é centrada em conceitos, e não em autores, e sintetiza o conhecimento acumulado para sustentar o avanço teórico (Webster & Watson, 2002). Ela também deve ser crítica e orientada ao problema (Tranfield et al., 2003).",
+ ex:"“Três correntes explicam X: (1) ... (2) ... (3) ... Persiste o debate sobre Z, o que motiva este estudo.”",
+ er:"Parágrafos no formato “Fulano diz..., Sicrano afirma...” sem síntese nem crítica.",
+ ac:"Reorganize em uma matriz conceito × autor; escreva sínteses e termine cada seção com “então, o que ainda falta?”.",
+ r:["webster2002","tranfield2003"]},
+{d:3,q:"Existe um modelo conceitual (figura) com as relações entre construtos explicitadas e ligadas à teoria.",
+ ev:"Figura clara, com setas direcionadas, sinais esperados e uma justificativa teórica para cada relação.",
+ why:"Teorias são sistemas de construtos e proposições com lógica explícita (Bacharach, 1989); representar visualmente essas relações ajuda a verificar a coerência e a comunicar a contribuição (Whetten, 1989).",
+ ex:"Modelo com 4 a 6 construtos: X → Z → Y, com moderador W, e uma frase de justificativa por seta.",
+ er:"Caixas e setas sem direção, sem sinal esperado e sem justificativa.",
+ ac:"Desenhe o modelo e escreva, para cada seta, uma frase começando com “porque”.",
+ r:["bacharach1989","whetten1989"]},
+{d:3,q:"Minhas hipóteses ou proposições derivam logicamente da teoria e são testáveis ou refutáveis (ou, em estudos qualitativos, há proposições/perguntas orientadoras claras).",
+ ev:"Cada hipótese traz argumento teórico, direção esperada e formulação que pode ser refutada.",
+ why:"Pesquisas que testam teoria derivam hipóteses de argumentos teóricos explícitos, ao passo que as que constroem teoria justificam a lógica da emergência dos conceitos; ambas exigem clareza sobre o tipo de contribuição (Colquitt & Zapata-Phelan, 2007).",
+ ex:"“H1: Quanto maior a autonomia, maior o engajamento (+), porque a autonomia aumenta a motivação intrínseca.”",
+ er:"Hipóteses óbvias, sem direção ou sem o “porquê”.",
+ ac:"Reescreva cada hipótese com direção, mecanismo (“porque...”) e unidade de análise.",
+ r:["colquitt2007","bacharach1989"]},
+{d:3,q:"Considerei explicações alternativas, mediadores, moderadores ou variáveis de controle relevantes.",
+ ev:"Controles e explicações rivais listados e justificados, com indicação de como o desenho lida com cada um.",
+ why:"Alegações causais exigem que se tratem explicações rivais e endogeneidade, sob risco de conclusões espúrias (Antonakis et al., 2010). Decisões de desenho devem antecipar essas ameaças (Bono & McNamara, 2011).",
+ ex:"“Controlamos porte e idade da firma; testamos a explicação rival de que o efeito se deve ao setor.”",
+ er:"Omitir controles por conveniência ou por não ter o dado.",
+ ac:"Liste três explicações rivais e descreva como o desenho (controles, dados, técnica) as neutraliza.",
+ r:["antonakis2010","bono2011"]},
+{d:4,q:"O método (quantitativo, qualitativo, misto ou revisão) é coerente com a pergunta e com o estágio de desenvolvimento da teoria.",
+ ev:"Justificativa explícita do ajuste entre pergunta, estágio da teoria e método.",
+ why:"Boas pesquisas de campo demonstram ajuste metodológico: o desenho precisa ser coerente com o tipo de pergunta e o estágio da teoria (nascente, intermediária ou madura) (Edmondson & McManus, 2007). Para teoria nascente, estudos de caso são adequados (Eisenhardt, 1989).",
+ ex:"“Teoria nascente sobre X, então estudo de casos múltiplos; teoria madura, então survey com testes de hipóteses.”",
+ er:"Escolher survey “por ser mais fácil” sem relação com a pergunta.",
+ ac:"Preencha: pergunta, estágio da teoria, método escolhido e por que ele é o melhor ajuste.",
+ r:["edmondson2007","eisenhardt1989"]},
+{d:4,q:"População, amostra (ou casos) e critérios de seleção estão definidos e justificados, incluindo tamanho e acesso aos dados.",
+ ev:"Critérios explícitos; tamanho justificado (poder estatístico, saturação ou replicação teórica) e acesso viável.",
+ why:"A amostra afeta a validade e o poder estatístico das conclusões (Hair et al., 2019); em estudos de caso, os casos devem ser escolhidos por relevância teórica, e não por conveniência (Eisenhardt, 1989).",
+ ex:"“n = 200 (poder 0,80 e efeito médio) com amostragem estratificada por porte” ou “6 casos por replicação teórica”.",
+ er:"Amostra por conveniência sem discutir limites ou viés de seleção.",
+ ac:"Calcule o tamanho mínimo da amostra (ex.: G*Power) ou defina o critério de saturação/replicação e confirme o acesso.",
+ r:["hair2019","eisenhardt1989"]},
+{d:4,q:"O desenho de pesquisa foi planejado para reduzir vieses (ex.: viés de método comum, seleção, endogeneidade, triangulação).",
+ ev:"Medidas ex ante (fontes múltiplas, separação temporal, triangulação) e plano de checagens ex post.",
+ why:"Viés de método comum pode distorcer relações entre variáveis coletadas da mesma fonte; remédios procedimentais e estatísticos devem ser planejados antes da coleta (Podsakoff et al., 2003; Podsakoff et al., 2012). Endogeneidade ameaça inferências causais (Antonakis et al., 2010).",
+ ex:"“Variável independente coletada com gestores e dependente com funcionários, em dois momentos.”",
+ er:"Coletar todas as variáveis do mesmo respondente, no mesmo momento, sem nenhum controle.",
+ ac:"Separe fontes ou momentos de coleta e inclua testes de viés de método comum; no qualitativo, planeje triangulação.",
+ r:["podsakoff2012","podsakoff2003","antonakis2010"]},
+{d:5,q:"Os instrumentos (questionário ou roteiro) foram construídos ou adaptados a partir da literatura e testados em pré-teste ou piloto.",
+ ev:"Escalas validadas citadas, tradução reversa quando necessário e pré-teste com ajustes registrados.",
+ why:"O desenvolvimento de medidas exige base teórica, geração e refinamento de itens e testes preliminares antes da coleta final (Hinkin, 1998).",
+ ex:"“Adaptamos a escala de X (Autor, ano), com tradução reversa e pré-teste com 8 respondentes.”",
+ er:"Criar itens “do zero” sem apoio teórico ou sem qualquer teste.",
+ ac:"Busque escalas validadas na literatura, faça tradução reversa e teste com 5 a 10 pessoas antes da coleta.",
+ r:["hinkin1998"]},
+{d:5,q:"Defini como avaliarei a qualidade dos dados: confiabilidade e validade (quantitativo) ou credibilidade e rigor (qualitativo).",
+ ev:"Plano com critérios claros (confiabilidade composta, AVE, validade discriminante; ou estrutura de dados, triangulação e checagem).",
+ why:"Em modelos com variáveis latentes, a validade convergente e discriminante deve ser demonstrada (Fornell & Larcker, 1981; Hair et al., 2019). Em pesquisa indutiva, o rigor é demonstrado ligando dados brutos a conceitos de 1ª e 2ª ordem (Gioia et al., 2013).",
+ ex:"“Alfa e confiabilidade composta ≥ 0,70; AVE ≥ 0,50; validade discriminante por Fornell-Larcker.”",
+ er:"Relatar apenas o alfa de Cronbach, ou dizer que o qualitativo “é válido porque foi feito com cuidado”.",
+ ac:"Escreva uma tabela com os critérios de qualidade que usará e a referência de cada um, antes da coleta.",
+ r:["fornell1981","gioia2013","hair2019"]},
+{d:5,q:"A técnica de análise é adequada, está descrita e sei interpretar os resultados (pressupostos, outliers, codificação).",
+ ev:"Técnica justificada, pressupostos e outliers tratados, ou procedimento de codificação descrito e documentado.",
+ why:"Decisões sobre outliers alteram resultados e devem ser feitas com critérios transparentes (Aguinis et al., 2013). A escolha e o relato da técnica devem seguir boas práticas (Hair et al., 2019), e, no qualitativo, o processo de codificação deve ser demonstrado (Gioia et al., 2013).",
+ ex:"“Regressão múltipla hierárquica, com verificação de multicolinearidade e tratamento de outliers (Aguinis et al., 2013).”",
+ er:"Rodar testes até “dar significância” sem plano prévio ou relatar só o que funcionou.",
+ ac:"Escreva um plano de análise, passo a passo, com cada hipótese associada ao teste que a responderá.",
+ r:["aguinis2013","hair2019","gioia2013"]},
+{d:6,q:"O projeto atende aos requisitos éticos (consentimento/TCLE, anonimato, comitê de ética quando exigido e LGPD).",
+ ev:"TCLE, anonimização, avaliação do comitê de ética quando aplicável e dados armazenados com segurança.",
+ why:"Pesquisas em gestão envolvem dilemas éticos de consentimento, confidencialidade e uso dos dados (Bell & Bryman, 2007). No Brasil, a LGPD regula dados pessoais (Brasil, 2018), e a Resolução CNS nº 510 disciplina pesquisas em Ciências Humanas e Sociais (Conselho Nacional de Saúde, 2016).",
+ ex:"TCLE apresentado antes do questionário, nomes substituídos por códigos, dados guardados em pasta protegida.",
+ er:"Coletar dados identificáveis sem consentimento ou compartilhar dados de empresas sem autorização.",
+ ac:"Redija o TCLE, defina a anonimização e consulte a coordenação sobre a necessidade de avaliação ética.",
+ r:["bell2007","lgpd2018","cns2016"]},
+{d:6,q:"Documento e organizo dados, códigos e decisões de análise para que outra pessoa consiga entender e replicar o estudo.",
+ ev:"Livro de códigos, planilhas e scripts versionados e diário de decisões da pesquisa.",
+ why:"A transparência metodológica (relato de decisões, dados e procedimentos) aumenta a credibilidade e a replicabilidade da pesquisa em gestão (Aguinis et al., 2018) e é essencial mesmo em entrevistas qualitativas (Aguinis & Solarino, 2019).",
+ ex:"Pasta com dados brutos, livro de códigos, script de análise e um diário com a data e o motivo de cada decisão.",
+ er:"Alterar dados sem registro ou manter versões soltas e sem nome padronizado.",
+ ac:"Crie uma pasta organizada com dados brutos, livro de códigos e diário de decisões, com cópia de segurança.",
+ r:["aguinis2018","aguinis2019"]},
+{d:6,q:"Uso referências e ferramentas (inclusive IA generativa) com integridade: citações corretas, sem plágio e com uso de IA declarado.",
+ ev:"Gerenciador de referências, verificação de similaridade e declaração de uso de IA conforme regras da instituição.",
+ why:"A integridade acadêmica exige atribuição correta das fontes e transparência sobre o uso de ferramentas (Bell & Bryman, 2007). O manual da APA estabelece o padrão de citação e referência (American Psychological Association, 2020).",
+ ex:"Uso de Zotero ou Mendeley, checagem de similaridade e nota metodológica declarando como a IA foi usada.",
+ er:"Colar texto gerado por IA sem revisão e sem checar se as referências realmente existem.",
+ ac:"Adote um gerenciador de referências, confira cada citação na fonte original e declare o uso de IA conforme a política da instituição.",
+ r:["bell2007","apa2020"]},
+{d:7,q:"Planejei discutir os resultados dialogando com a teoria e a literatura (o que confirma, contradiz ou estende).",
+ ev:"Cada resultado é comparado com estudos prévios e interpretado pelo mecanismo teórico, e não apenas descrito.",
+ why:"A discussão deve evidenciar a contribuição teórica, explicando por que os resultados ocorrem e o que mudam no conhecimento (Whetten, 1989). No qualitativo, a teorização deve ir além da descrição dos dados (Pratt, 2009).",
+ ex:"“Ao contrário de A (2019), encontramos efeito negativo; sugerimos que o mecanismo Z explica a diferença.”",
+ er:"Repetir os resultados em prosa, sem interpretá-los com a teoria.",
+ ac:"Para cada hipótese, escreva três linhas: o que encontrei, com quem concorda ou discorda e qual mecanismo explica.",
+ r:["whetten1989","pratt2009"]},
+{d:7,q:"Defini implicações teóricas e práticas realistas e limitações com agenda de pesquisas futuras.",
+ ev:"Implicações por público (academia, gestores, políticas), limitações honestas e agenda de pesquisa específica.",
+ why:"A pergunta “e daí?” precisa ser respondida: o valor do estudo depende de implicações claras para teoria e prática (Whetten, 1989). Relatos qualitativos e quantitativos de qualidade são francos sobre seus limites (Pratt, 2009).",
+ ex:"“Para gestores, o resultado sugere ...; para a teoria, estende ...; limitação: amostra transversal; pesquisa futura: estudo longitudinal.”",
+ er:"Implicações genéricas (“as empresas devem investir mais”) e limitações escondidas.",
+ ac:"Escreva implicações separadas por público e transforme cada limitação em uma sugestão concreta de pesquisa futura.",
+ r:["whetten1989","pratt2009"]},
+{d:7,q:"O texto segue uma estrutura acadêmica clara (introdução com gancho, coerência interna, normas APA/ABNT) e está pronto para leitura crítica da banca.",
+ ev:"Introdução com gancho, lacuna e contribuição; fio condutor coerente; referências padronizadas e revisão por pares.",
+ why:"A introdução precisa fisgar o leitor, apresentar a lacuna e a contribuição (Grant & Pollock, 2011) e construir coerência entre o que se sabe e o que será feito (Locke & Golden-Biddle, 1997). A padronização segue manuais como o da APA (American Psychological Association, 2020).",
+ ex:"Introdução de 4 a 5 parágrafos: contexto, problema, lacuna, pergunta e contribuição, seguida do roteiro do texto.",
+ er:"Introdução genérica, referências fora do padrão e capítulos sem ligação entre si.",
+ ac:"Peça a dois colegas que leiam a introdução e resumam, em uma frase, a contribuição; ajuste até que acertem.",
+ r:["grant2011","locke1997","apa2020"]}
+];
+
+const LEVELS = [
+ ["Não iniciei","Ainda não comecei esta parte"],
+ ["Ideia inicial","Tenho uma ideia, sem registro escrito"],
+ ["Em desenvolvimento","Há rascunho, mas falta evidência"],
+ ["Bem encaminhado","Consistente, falta refinar e validar"],
+ ["Consolidado","Pronto para a banca, com evidências"]
+];
+
+const BANDS = [
+ [0,"Fase de concepção","O projeto ainda está em construção conceitual. Foque o problema, a lacuna e a teoria antes de coletar qualquer dado."],
+ [25,"Em construção","Há elementos importantes, mas a base teórica e metodológica precisa de consolidação para sustentar um TCC de alto nível."],
+ [50,"Intermediário","O TCC tem estrutura reconhecível. Refinar a contribuição, o rigor e a transparência elevará o trabalho de nível."],
+ [70,"Avançado","O trabalho está maduro. Ajustes pontuais em rigor, discussão e escrita levam ao nível de excelência."],
+ [85,"Nível de excelência","O TCC está em padrão compatível com bancas exigentes. Foque a leitura crítica e o polimento final."]
+];
+
+const WEEKS = [
+ ["Semana 1: Fundamentos",[0,1],"problema, lacuna e contribuição"],
+ ["Semana 2: Base teórica",[2,3],"revisão de literatura e modelo"],
+ ["Semana 3: Método",[4,5],"desenho, dados e análise"],
+ ["Semana 4: Fechamento",[6,7],"ética, discussão e redação"]
+];
+
+/* ---------- Estado ---------- */
+const KEY="ab-tcc-diag-v1";
+let S={profile:{},ans:{},i:0,view:"intro"};
+try{const s=JSON.parse(localStorage.getItem(KEY)||"null"); if(s&&s.ans){S=s;}}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const norm=s=>s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+const vFull=r=>r.v+(r.d?" https://doi.org/"+r.d:"");
+const doiLink=r=>r.d?` <a href="https://doi.org/${esc(r.d)}" target="_blank" rel="noopener">https://doi.org/${esc(r.d)}</a>`:"";
+const refHTML=k=>{const r=REF[k];return `<div class="ref">${esc(r.a)}<i>${esc(r.j)}</i>${esc(r.v)}${doiLink(r)}${r.top?'<span class="abs" title="Periódico classificado ABS 4/4* no Academic Journal Guide (confirme na edição vigente)">ABS 4/4*</span>':""}</div>`};
+const colorFor=p=>p<35?"#C23B2E":p<60?"#E3A008":p<80?"#2338D9":"#0E8567";
+const rgbFor=p=>p<35?[194,59,46]:p<60?[227,160,8]:p<80?[35,56,217]:[14,133,103];
+function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("on");setTimeout(()=>e.classList.remove("on"),2600)}
+
+/* ---------- Cálculos ---------- */
+function scores(){
+  const sum=Array(DIMS.length).fill(0),cnt=Array(DIMS.length).fill(0);
+  Q.forEach((q,i)=>{cnt[q.d]++;sum[q.d]+=(S.ans[i]||0)});
+  const dim=sum.map((s,d)=>Math.round(s/(cnt[d]*4)*100));
+  const total=Math.round(Q.reduce((a,_,i)=>a+(S.ans[i]||0),0)/(Q.length*4)*100);
+  return {dim,total};
+}
+const band=t=>{let b=BANDS[0];BANDS.forEach(x=>{if(t>=x[0])b=x});return b};
+const dtxt=(d,p)=>p<50?DIMS[d].lo:p<80?DIMS[d].mid:DIMS[d].hi;
+function gaps(){return Q.map((q,i)=>({i,q,v:S.ans[i]==null?0:S.ans[i]})).filter(x=>x.v<=2).sort((a,b)=>a.v-b.v||a.q.d-b.q.d)}
+
+/* ---------- Cores por dimensão ---------- */
+const DCOL=[{c:"#B3173F",fg:"#fff"},{c:"#C2410C",fg:"#fff"},{c:"#F2B01E",fg:"#1A1405"},{c:"#0B7A5A",fg:"#fff"},{c:"#0E6E8C",fg:"#fff"},{c:"#3341D1",fg:"#fff"},{c:"#6B35C9",fg:"#fff"},{c:"#A21C86",fg:"#fff"}];
+const hexRgb=h=>[1,3,5].map(i=>parseInt(h.substr(i,2),16));
+function theme(d){
+  const r=document.documentElement.style,m=$("#themeMeta");
+  if(d==null){r.setProperty("--page","#0D0B1A");r.setProperty("--c","#3341D1");r.setProperty("--fg","#fff");r.setProperty("--veil","rgba(255,255,255,.14)");r.setProperty("--vline","rgba(255,255,255,.42)");m.content="#0D0B1A";return}
+  const k=DCOL[d],dark=k.fg!=="#fff";
+  r.setProperty("--page",k.c);r.setProperty("--c",k.c);r.setProperty("--fg",k.fg);
+  r.setProperty("--veil",dark?"rgba(13,11,26,.10)":"rgba(255,255,255,.16)");
+  r.setProperty("--vline",dark?"rgba(13,11,26,.42)":"rgba(255,255,255,.45)");
+  m.content=k.c;
+}
+
+/* ---------- Professor (SVG): jovem, pele clara, cabelo preto, óculos ---------- */
+const FACE=`
+<path d="M30 33 Q29 11 50 10 Q71 11 70 33 V40 Q70 56 50 57 Q30 56 30 40Z" fill="#FBE6DA"/>
+<circle cx="29.6" cy="38" r="3.8" fill="#F3D2C0"/><circle cx="70.4" cy="38" r="3.8" fill="#F3D2C0"/>
+<path d="M29 31 Q24 10 45 6 Q64 2 72 16 Q76 25 71 34 Q70 24 63 20 Q52 24 40 19 Q33 23 31 33Z" fill="#14121C"/>
+<path d="M41 8 Q56 -3 71 12 Q61 7 54 13 Q48 9 41 8Z" fill="#14121C"/>
+<path d="M35 28.2 q5.5-3.2 11 -.4 M54 27.8 q5.5-2.8 11 .4" stroke="#14121C" stroke-width="2.7" fill="none" stroke-linecap="round"/>
+<circle cx="37.5" cy="46" r="3.4" fill="#F4A9A0" opacity=".4"/><circle cx="62.5" cy="46" r="3.4" fill="#F4A9A0" opacity=".4"/>
+<rect x="33.8" y="30.6" width="14" height="10.6" rx="4.2" fill="rgba(255,255,255,.22)" stroke="#14121C" stroke-width="2.2"/>
+<rect x="52.2" y="30.6" width="14" height="10.6" rx="4.2" fill="rgba(255,255,255,.22)" stroke="#14121C" stroke-width="2.2"/>
+<path d="M47.8 34.6 q2.2-1.8 4.4 0" stroke="#14121C" stroke-width="2" fill="none"/>
+<path d="M33.8 33.4 L30.4 32.4 M66.2 33.4 L69.6 32.4" stroke="#14121C" stroke-width="1.8"/>
+<g class="eye"><circle cx="40.8" cy="36" r="2.1" fill="#1B1530"/><circle cx="41.5" cy="35.2" r=".7" fill="#fff"/></g>
+<g class="eye"><circle cx="59.2" cy="36" r="2.1" fill="#1B1530"/><circle cx="59.9" cy="35.2" r=".7" fill="#fff"/></g>
+<path d="M50 39 q-1.8 4.6 1.6 5" stroke="#E0AE97" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+<path class="mouth" d="M43.6 48.6 Q50 55.4 56.4 48.6 Q50 50.4 43.6 48.6Z" fill="#fff" stroke="#B5544A" stroke-width="1.5" stroke-linejoin="round"/>`;
+function profSVG(){return `<svg class="prof-svg" viewBox="0 0 100 150" aria-hidden="true">
+<ellipse cx="50" cy="147" rx="27" ry="3.5" fill="rgba(0,0,0,.28)"/>
+<g class="legL"><rect x="38.5" y="100" width="10.5" height="40" rx="4.5" fill="#1F2547"/><path d="M34 139 h16 a2 2 0 0 1 2 2 v3 a3 3 0 0 1 -3 3 h-13 a3 3 0 0 1 -3 -3z" fill="#F5F4FA"/><rect x="34" y="145" width="18" height="3" rx="1.5" fill="#F2B01E"/></g>
+<g class="legR"><rect x="51" y="100" width="10.5" height="40" rx="4.5" fill="#1F2547"/><path d="M48 139 h16 a2 2 0 0 1 2 2 v3 a3 3 0 0 1 -3 3 h-13 a3 3 0 0 1 -3 -3z" fill="#F5F4FA"/><rect x="48" y="145" width="18" height="3" rx="1.5" fill="#F2B01E"/></g>
+<g class="torso">
+ <g class="armL"><rect x="20" y="58" width="10.5" height="33" rx="5.2" fill="#241C63"/><circle cx="25.3" cy="93" r="5" fill="#FBE6DA"/>
+  <g transform="rotate(-8 18 90)"><rect x="8" y="78" width="19" height="25" rx="3" fill="#0D0B1A"/><rect x="9.6" y="79.6" width="15.8" height="21.8" rx="1.8" fill="#17132E"/>
+  ${DCOL.map((k,i)=>`<rect x="11" y="${81.5+i*2.4}" width="${5+((i*5)%9)}" height="1.6" rx=".8" fill="${k.c}"/>`).join("")}</g></g>
+ <path d="M28 62 Q28 53 40 52 H60 Q72 53 72 62 V104 H28Z" fill="#241C63"/>
+ <path d="M42.5 52 L50 78 L57.5 52Z" fill="#fff"/>
+ <path d="M42.5 52 L47.5 79 L36 66Z M57.5 52 L52.5 79 L64 66Z" fill="#1A1450"/>
+ <path d="M33 70 h7 v3 h-7z" fill="#F2B01E"/>
+ <circle cx="50" cy="90" r="1.7" fill="#8F86E8"/><circle cx="50" cy="99" r="1.7" fill="#8F86E8"/>
+ <rect x="44" y="48" width="12" height="9" rx="3" fill="#F3D2C0"/>
+ <g class="armR"><rect x="69.5" y="58" width="10.5" height="33" rx="5.2" fill="#241C63"/><circle cx="74.7" cy="93" r="5" fill="#FBE6DA"/></g>
+ ${FACE}
+</g></svg>`}
+function faceSVG(){return `<svg viewBox="20 2 60 58" aria-hidden="true">${FACE.replace(/class="eye"/g,"").replace(/class="mouth"/g,"")}</svg>`}
+
+/* ---------- Professor: movimento e balão ---------- */
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const P={el:$("#prof"),flip:$("#flip"),bub:$("#bub"),x:12,pause:0,tm:null,chat:false};
+$("#profInner").innerHTML=profSVG();
+$("#avatar").innerHTML=faceSVG();
+function zone(){const vw=innerWidth,mx=vw-84-8;return S.view==="quiz"?[Math.round(vw*.58),mx]:[8,mx]}
+function moveTo(x){
+  const z=zone(); x=Math.max(z[0],Math.min(z[1],x));
+  const dist=Math.abs(x-P.x); if(dist<10) return Promise.resolve();
+  P.flip.style.transform=`scaleX(${x>P.x?1:-1})`;
+  if(reduce){P.el.style.transform=`translateX(${x}px)`;P.x=x;return Promise.resolve()}
+  const dur=dist/70;
+  P.el.style.transition=`transform ${dur}s linear`;
+  P.el.classList.add("walking");
+  P.el.style.transform=`translateX(${x}px)`; P.x=x;
+  return new Promise(r=>setTimeout(()=>{P.el.classList.remove("walking");P.flip.style.transform="scaleX(1)";r()},dur*1000));
+}
+function say(t,ms=5600){
+  if(P.chat) return;
+  const b=P.bub; b.textContent=t; b.classList.add("on");
+  b.style.transform="translate(-50%,0) scale(1)";
+  requestAnimationFrame(()=>{
+    const w=b.offsetWidth,cx=P.x+42,l=cx-w/2,r=cx+w/2;let sh=0;
+    if(l<10)sh=10-l;else if(r>innerWidth-10)sh=innerWidth-10-r;
+    b.style.transform=`translate(calc(-50% + ${sh}px),0) scale(1)`;b.style.setProperty("--tail",`calc(50% - ${sh}px)`);
+  });
+  P.el.classList.add("talk"); clearTimeout(P.tm);
+  setTimeout(()=>P.el.classList.remove("talk"),Math.min(ms,2400));
+  P.tm=setTimeout(()=>{b.classList.remove("on");b.style.transform="translate(-50%,6px) scale(.96)"},ms);
+}
+function anim(c,ms){P.el.classList.remove(c);void P.el.offsetWidth;P.el.classList.add(c);setTimeout(()=>P.el.classList.remove(c),ms)}
+function wander(){
+  const next=()=>setTimeout(wander,6500+Math.random()*5000);
+  if(reduce||P.chat||Date.now()<P.pause||document.hidden){next();return}
+  const z=zone(),x=z[0]+Math.random()*(z[1]-z[0]);
+  moveTo(x).then(()=>{ if(Math.random()<.35) say(idleLine()); });
+  next();
+}
+const IDLE=["Toque em mim para tirar dúvidas.","Dica: seja honesto na autoavaliação. O diagnóstico depende disso.","Lembre-se: boa pesquisa começa com boa pergunta.","Já pensou em registrar sua busca de artigos em planilha?"];
+const idleLine=()=>IDLE[Math.floor(Math.random()*IDLE.length)];
+["pointerdown","touchstart","scroll"].forEach(ev=>addEventListener(ev,()=>{P.pause=Date.now()+5500},{passive:true}));
+function greetQ(){
+  if(S.view!=="quiz"||P.chat) return;
+  const q=Q[S.i];
+  moveTo(innerWidth).then(()=>{say(DIMS[q.d].tip);anim("hello",2800)});
+}
+P.el.addEventListener("click",openChat);
+P.el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openChat()}});
+
+/* ---------- Telas ---------- */
+const view=$("#view");
+function buildSpec(){
+  const sp=$("#spec");sp.className="spec"+(S.view==="result"?" flat":"");
+  sp.innerHTML=DCOL.map((k,i)=>{
+    const idx=Q.map((x,j)=>x.d===i?j:-1).filter(j=>j>=0),done=idx.every(j=>S.ans[j]!=null),cur=S.view==="quiz"&&Q[S.i].d===i;
+    return `<button style="--sc:${k.c}" class="${cur?"cur":done?"done":""}" data-d="${i}" aria-label="${esc(DIMS[i].n)}"></button>`}).join("");
+  sp.querySelectorAll("button").forEach(b=>b.onclick=()=>{if(S.view!=="quiz")return;S.i=Q.findIndex(x=>x.d===+b.dataset.d);S.dir="f";save();render();window.scrollTo({top:0});greetQ()});
+}
+function setChrome(){
+  const quiz=S.view==="quiz";
+  $("#top").classList.toggle("hidden",S.view==="intro");
+  $("#nav").classList.toggle("hidden",!quiz);
+  $("#main").classList.toggle("noNav",!quiz);
+  P.el.classList.toggle("noNavPos",!quiz);
+  theme(quiz?Q[S.i].d:null);
+  $("#cnt").textContent=quiz?`${S.i+1} de ${Q.length}`:S.view==="result"?"Resultado":"";
+  $("#topSub").textContent=S.profile.nome||CONFIG.PROFESSOR;
+  buildSpec();
+}
+function go(v){S.view=v;save();render();window.scrollTo({top:0,behavior:"instant"})}
+function render(){setChrome();({intro:renderIntro,quiz:renderQuiz,result:renderResult})[S.view]()}
+
+function renderIntro(){
+  const p=S.profile,started=Object.keys(S.ans).length>0;
+  const arcs=DCOL.map((k,i)=>{const a0=(-90+i*45+3)*Math.PI/180,a1=(-90+i*45+42)*Math.PI/180,r=88;
+    const pt=n=>(100+r*Math.cos(n)).toFixed(2)+" "+(100+r*Math.sin(n)).toFixed(2);
+    return `<path class="arc" pathLength="100" style="animation-delay:${i*90}ms" stroke="${k.c}" d="M${pt(a0)} A${r} ${r} 0 0 1 ${pt(a1)}"/>`}).join("");
+  view.innerHTML=`
+  <div class="ringwrap"><svg viewBox="0 0 200 200" aria-hidden="true">${arcs}</svg><img class="logo-w" data-logo alt="Logo AB"></div>
+  <h1 class="big">Em que ponto está o seu TCC?</h1>
+  <p class="lead">Responda 24 questões baseadas em periódicos de topo em Administração. O Dr. Andrezinho acompanha você e, no final, entrega um diagnóstico em PDF com gráficos e um plano para concluir o trabalho.</p>
+  <div class="stats"><div><b>24</b><span>questões em 8 dimensões</span></div><div><b>15</b><span>minutos para responder</span></div><div><b>PDF</b><span>com gráficos e plano</span></div></div>
+  <form class="panel" id="pf">
+    <h2>Sobre você e seu TCC</h2>
+    <label class="field"><span>Nome completo</span><input name="nome" required autocomplete="name" value="${esc(p.nome)}"></label>
+    <label class="field"><span>Turma ou semestre</span><input name="turma" value="${esc(p.turma)}" placeholder="Ex.: Administração, 8º semestre"></label>
+    <label class="field"><span>Título provisório do TCC</span><input name="tema" value="${esc(p.tema)}"></label>
+    <label class="field"><span>Tipo de pesquisa</span><select name="tipo">${["Quantitativa","Qualitativa","Mista","Revisão sistemática","Ainda não defini"].map(o=>`<option ${p.tipo===o?"selected":""}>${o}</option>`).join("")}</select></label>
+    <button class="btn block" type="submit">${started?"Continuar diagnóstico":"Começar diagnóstico"}</button>
+    ${started?'<button class="btn ghost block" type="button" id="reset">Recomeçar do zero</button>':""}
+    <p class="fine">Suas respostas ficam salvas só neste aparelho. Nada é enviado a servidores.</p>
+  </form>
+  <p class="sig">Concepção acadêmica: ${esc(CONFIG.PROFESSOR)}</p>`;
+  $("#pf").onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);S.profile={nome:f.get("nome").trim(),turma:f.get("turma").trim(),tema:f.get("tema").trim(),tipo:f.get("tipo")};
+    if(!started)S.i=0;S.dir="f";go("quiz");setTimeout(()=>{say(`Olá, ${S.profile.nome.split(" ")[0]}! Vamos começar. Toque em mim se precisar de ajuda.`);anim("hello",2800)},500)};
+  if(started)$("#reset").onclick=()=>{if(confirm("Apagar todas as respostas e recomeçar?")){S={profile:{},ans:{},i:0,view:"intro"};save();chatLog=[];render()}};
+  applyLogos();
+}
+
+const REACT=["Sem problemas. Todo TCC começa do zero e eu te ajudo.","Obrigado pela sinceridade. Vamos transformar isso em texto.","Você está no caminho. O que ainda falta?","Muito bom! Falta pouco para consolidar.","Excelente! Guarde as evidências para a banca."];
+function pick(v){
+  S.ans[S.i]=v;save();
+  view.querySelectorAll(".opt").forEach(o=>o.setAttribute("aria-checked",+o.dataset.v===v));
+  try{navigator.vibrate&&navigator.vibrate(12)}catch(e){}
+  updNav(true);buildSpec();
+  say(REACT[v],3800);anim("hop",600);
+}
+function renderQuiz(){
+  const q=Q[S.i],d=DIMS[q.d],val=S.ans[S.i];
+  view.innerHTML=`<div class="${S.dir==="b"?"inb":"in"}">
+  <div class="qhead"><span class="pill">${esc(d.n)}</span><span class="qn">Dimensão ${q.d+1}/${DIMS.length}</span></div>
+  <h1 class="qtext">${esc(q.q)}</h1>
+  <div class="opts" role="radiogroup" aria-label="Seu nível nesta questão">
+    ${LEVELS.map((l,v)=>`<button class="opt" role="radio" aria-checked="${val===v}" data-v="${v}"><span class="n">${v}</span><span><b>${l[0]}</b><small>${l[1]}</small></span><span class="ck" aria-hidden="true"></span></button>`).join("")}
+  </div>
+  <div class="ev"><b>Nota 4 significa:</b> ${esc(q.ev)}</div>
+  <section class="why" aria-label="Justificativa científica">
+    <h3>Por que esta questão importa</h3>
+    <p>${esc(q.why)}</p>
+    <div class="refs">${q.r.map(refHTML).join("")}</div>
+  </section>
+  <button class="askbtn" id="ask">${faceSVG()}<span>Pedir ajuda ao Dr. Andrezinho<br><small>Explicação, exemplo e dicas para esta questão</small></span></button></div>`;
+  $("#ask").onclick=openChat;
+  view.querySelectorAll(".opt").forEach(b=>b.onclick=()=>pick(+b.dataset.v));
+  updNav(false);applyLogos();
+}
+function updNav(pulse){
+  const last=S.i===Q.length-1,has=S.ans[S.i]!=null;
+  $("#bPrev").style.display=S.i===0?"none":"";
+  const n=$("#bNext");n.textContent=last?"Ver diagnóstico":"Próxima";n.disabled=!has;
+  n.classList.remove("pulse");if(pulse){void n.offsetWidth;n.classList.add("pulse")}
+}
+function nav(dir){
+  if(S.view!=="quiz")return;
+  if(dir<0){if(S.i>0){S.i--;S.dir="b";save();render();window.scrollTo({top:0});greetQ()}return}
+  if(S.ans[S.i]==null)return;
+  if(S.i<Q.length-1){S.i++;S.dir="f";save();render();window.scrollTo({top:0});greetQ()}
+  else{
+    if(Object.keys(S.ans).length<Q.length){toast("Responda todas as questões para ver o diagnóstico");S.i=Q.findIndex((_,i)=>S.ans[i]==null);S.dir="f";render();return}
+    go("result");setTimeout(()=>{say("Seu diagnóstico está pronto! Baixe o PDF no final da página.");anim("hello",2800)},900)
+  }
+}
+$("#bPrev").onclick=()=>nav(-1);
+$("#bNext").onclick=()=>nav(1);
+let tx=0,ty=0;
+addEventListener("touchstart",e=>{tx=e.changedTouches[0].clientX;ty=e.changedTouches[0].clientY},{passive:true});
+addEventListener("touchend",e=>{
+  if(S.view!=="quiz"||P.chat)return;
+  const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)>90&&Math.abs(dy)<45)nav(dx<0?1:-1);
+},{passive:true});
+addEventListener("keydown",e=>{
+  if(S.view!=="quiz"||P.chat||/INPUT|TEXTAREA|SELECT/.test((e.target.tagName||""))||e.metaKey||e.ctrlKey)return;
+  if(/^[0-4]$/.test(e.key))pick(+e.key);
+  else if(e.key==="ArrowRight")nav(1);else if(e.key==="ArrowLeft")nav(-1);
+});
+
+/* ---------- Rosácea (gráfico principal) ---------- */
+function drawRosette(cv,dim,total,th,p=1){
+  const ctx=cv.getContext("2d"),S2=cv.width,c=S2/2,Rm=S2*.29,Ri=S2*.13,st=Math.PI/4,gap=.05;
+  const F="'Bricolage Grotesque',Arial,sans-serif";
+  ctx.clearRect(0,0,S2,S2);
+  ctx.lineWidth=Math.max(1,S2*.0022);ctx.strokeStyle=th.ring;
+  [0,.25,.5,.75,1].forEach(f=>{ctx.beginPath();ctx.arc(c,c,Ri+(Rm-Ri)*f,0,Math.PI*2);ctx.stroke()});
+  dim.forEach((v,i)=>{
+    const a0=-Math.PI/2+i*st+gap/2,a1=a0+st-gap,am=(a0+a1)/2;
+    ctx.beginPath();ctx.arc(c,c,Rm,a0,a1);ctx.arc(c,c,Ri,a1,a0,true);ctx.closePath();ctx.fillStyle=th.track;ctx.fill();
+    const r=Ri+(Rm-Ri)*(v/100)*p;
+    if(v>0){ctx.beginPath();ctx.arc(c,c,r,a0,a1);ctx.arc(c,c,Ri,a1,a0,true);ctx.closePath();ctx.fillStyle=DCOL[i].c;ctx.fill()}
+    const lr=Rm+S2*.045,cx=Math.cos(am),sy=Math.sin(am);
+    ctx.fillStyle=th.text;ctx.font=`700 ${S2*.029}px ${F}`;
+    ctx.textAlign=cx>.35?"left":cx<-.35?"right":"center";
+    ctx.textBaseline=sy>.35?"top":sy<-.35?"bottom":"middle";
+    ctx.fillText(DIMS[i].s,c+cx*lr,c+sy*lr);
+  });
+  ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillStyle=th.text;
+  ctx.font=`800 ${S2*.08}px ${F}`;ctx.fillText(Math.round(total*p)+"%",c,c-S2*.006);
+  ctx.fillStyle=th.muted;ctx.font=`600 ${S2*.025}px ${F}`;ctx.fillText("geral",c,c+S2*.052);
+}
+const TH_DARK={ring:"rgba(255,255,255,.16)",track:"rgba(255,255,255,.07)",text:"#fff",muted:"#B7B1D6"};
+const TH_LIGHT={ring:"#D9D3EC",track:"#EEEAF7",text:"#0D0B1A",muted:"#5B5675"};
+function animateRosette(cv,dim,total){
+  if(reduce){drawRosette(cv,dim,total,TH_DARK,1);return}
+  const t0=performance.now(),D=1100;
+  const f=t=>{const k=Math.min(1,(t-t0)/D),e=1-Math.pow(1-k,3);drawRosette(cv,dim,total,TH_DARK,e);if(k<1)requestAnimationFrame(f)};
+  requestAnimationFrame(f);
+}
+
+function renderResult(){
+  const {dim,total}=scores(),b=band(total),p=S.profile,g=gaps();
+  const sorted=dim.map((v,i)=>[v,i]).sort((a,b)=>b[0]-a[0]);
+  const weeksHTML=WEEKS.map(w=>{
+    const items=g.filter(x=>w[1].includes(x.q.d));
+    return `<div class="week"><h3>${w[0]}</h3><small>Foco em ${w[2]}</small><ul>${items.length?items.map(x=>`<li style="--lc:${DCOL[x.q.d].c}">${esc(x.q.ac)}</li>`).join(""):`<li>Sem pendências críticas. Refine e valide este bloco com seu orientador.</li>`}</ul></div>`}).join("");
+  view.innerHTML=`<div class="in">
+  <p class="sub">${esc(p.nome||"")}${p.turma?" | "+esc(p.turma):""}</p>
+  <h1 class="rtitle">Seu diagnóstico</h1>
+  ${p.tema?`<p class="sub">TCC: ${esc(p.tema)} (${esc(p.tipo||"")})</p>`:""}
+  <canvas class="rosette" id="rosette" width="1000" height="1000" role="img" aria-label="Rosácea com o percentual de cada uma das 8 dimensões. Maturidade geral ${total}%"></canvas>
+  <div class="level">${esc(b[1])}</div>
+  <p class="levelp">${esc(b[2])}</p>
+  <div class="sec"><h2>Diagnóstico por dimensão</h2>
+   ${DIMS.map((d,i)=>`<div class="tile" style="--c:${DCOL[i].c};--fg:${DCOL[i].fg}"><div class="pct">${dim[i]}<small style="font-size:.42em;letter-spacing:0">%</small></div><h3>${esc(d.n)}</h3><div class="mt"><i style="width:${dim[i]}%"></i></div><p>${esc(dtxt(i,dim[i]))}</p></div>`).join("")}</div>
+  <div class="sec"><h2>Pontos fortes e prioridades</h2><div class="duo">
+   <div class="note"><b>Mais fortes</b><span>${sorted.slice(0,2).map(x=>DIMS[x[1]].n+" ("+x[0]+"%)").join(" e ")}</span></div>
+   <div class="note"><b>Mais urgentes</b><span>${sorted.slice(-3).reverse().map(x=>DIMS[x[1]].n+" ("+x[0]+"%)").join(", ")}</span></div></div></div>
+  <div class="sec"><h2>Plano de 4 semanas</h2><div class="tl">${weeksHTML}</div></div>
+  <div class="sec"><h2>Referências (APA 7)</h2><div class="refpanel">${usedRefs().map(refHTML).join("")}<p class="fine">DOIs conferidos em fontes online. Confira cada referência na fonte original e verifique a classificação dos periódicos na edição vigente do Academic Journal Guide.</p></div></div>
+  <div class="pdfbar"><button class="btn" id="pdfBtn">Baixar relatório em PDF</button></div>
+  <button class="btn ghost block" id="edit">Revisar minhas respostas</button>
+  <p class="sig">${esc(CONFIG.PROFESSOR)}</p></div>`;
+  const cv=$("#rosette");
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(()=>animateRosette(cv,dim,total));
+  $("#pdfBtn").onclick=makePDF;
+  $("#edit").onclick=()=>{S.i=0;S.dir="f";go("quiz")};
+  applyLogos();
+}
+function usedRefs(){const set=new Set();Q.forEach(q=>q.r.forEach(k=>set.add(k)));return [...set].sort((a,b)=>REF[a].a.localeCompare(REF[b].a))}
+
+/* ---------- PDF ---------- */
+function whiteLogo(){return new Promise(res=>{const im=new Image();im.onload=()=>{const c=document.createElement("canvas");c.width=im.width;c.height=im.height;const x=c.getContext("2d");x.drawImage(im,0,0);x.globalCompositeOperation="source-in";x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);res(c.toDataURL("image/png"))};im.onerror=()=>res(LOGO);im.src=LOGO})}
+async function makePDF(){
+  if(!window.jspdf){toast("Biblioteca de PDF indisponível. Verifique a conexão.");return}
+  const btn=$("#pdfBtn");btn.disabled=true;btn.textContent="Gerando PDF...";
+  try{
+  if(document.fonts&&document.fonts.ready)await document.fonts.ready;
+  const {jsPDF}=window.jspdf,doc=new jsPDF({unit:"mm",format:"a4",compress:true});
+  const W=210,H=297,M=16,CW=W-2*M,{dim,total}=scores(),bd=band(total),p=S.profile,g=gaps();
+  const INK=[13,11,26],MUT=[91,86,117],LINE=[218,211,238],PT=0.3528;
+  const BANDCOL=["#B3173F","#C2410C","#A66A00","#0E6E8C","#0B7A5A"],bc=hexRgb(BANDCOL[Math.max(0,BANDS.indexOf(bd))]);
+  const wl=await whiteLogo();
+  let y=0;
+  const specBand=(yy,h)=>DCOL.forEach((k,i)=>{doc.setFillColor(...hexRgb(k.c));doc.rect(i*W/8,yy,W/8,h,"F")});
+  const header=()=>{specBand(0,2.6);doc.addImage(LOGO,"PNG",M,9,10,10);doc.setFont("helvetica","bold");doc.setFontSize(9);doc.setTextColor(...INK);doc.text("Diagnóstico de maturidade do TCC",M+13,15.5);doc.setDrawColor(...LINE);doc.setLineWidth(.3);doc.line(M,22,W-M,22);y=30};
+  const newPage=()=>{doc.addPage();header()};
+  const need=h=>{if(y+h>H-20)newPage()};
+  function para(t,o={}){const{size=10,style="normal",color=INK,gap=2,w=CW,x=M,lh=1.45,align="left"}=o;doc.setFont("helvetica",style);doc.setFontSize(size);doc.setTextColor(...color);const lines=doc.splitTextToSize(String(t),w),step=size*PT*lh;lines.forEach(l=>{need(step);if(align==="center")doc.text(l,x+w/2,y+size*PT,{align:"center"});else doc.text(l,x,y+size*PT);y+=step});y+=gap}
+  function h2(t){need(18);y+=3;doc.setFillColor(...INK);doc.roundedRect(M,y,2.4,7,1.2,1.2,"F");doc.setFont("helvetica","bold");doc.setFontSize(14);doc.setTextColor(...INK);doc.text(t,M+5.5,y+5.6);y+=11}
+  function rich(segs,x,w,size=8.5,hang=6){
+    doc.setFontSize(size);const lh=size*PT*1.45;let cx=x,first=true;need(lh+1);
+    const toks=[];segs.forEach(([t,st])=>t.split(/(\s+)/).forEach(s=>{if(s!=="")toks.push([s,st])}));
+    toks.forEach(([t,st])=>{doc.setFont("helvetica",st);const tw=doc.getTextWidth(t),isSp=/^\s+$/.test(t);
+      if(cx+tw>x+w&&!isSp){y+=lh;need(lh);cx=x+hang;first=false}
+      if(isSp&&cx===x+hang&&!first)return;
+      doc.setTextColor(...INK);doc.text(t,cx,y+size*PT);cx+=tw});
+    y+=lh+1.2}
+  /* Capa */
+  doc.setFillColor(...INK);doc.rect(0,0,W,124,"F");specBand(124,3.2);
+  doc.addImage(wl,"PNG",M,18,24,24);
+  doc.setFont("helvetica","bold");doc.setFontSize(27);doc.setTextColor(255,255,255);
+  doc.text(["Diagnóstico de maturidade","do TCC"],M+31,28);
+  doc.setFont("helvetica","normal");doc.setFontSize(10);doc.setTextColor(183,177,214);
+  doc.text("Administração | 24 questões em 8 dimensões, fundamentadas em periódicos ABS 4/4*",M+31,45,{maxWidth:CW-31});
+  doc.setFont("helvetica","bold");doc.setFontSize(17);doc.setTextColor(255,255,255);doc.text(p.nome||"Estudante",M,76);
+  doc.setFont("helvetica","normal");doc.setFontSize(10.5);doc.setTextColor(183,177,214);
+  const info=[p.turma||"",...doc.splitTextToSize("TCC: "+(p.tema||"título não informado")+(p.tipo?" ("+p.tipo+")":""),CW)].filter(Boolean);
+  doc.text(info,M,83);
+  doc.text("Emitido em "+new Date().toLocaleDateString("pt-BR"),M,114);
+  const rc=document.createElement("canvas");rc.width=1100;rc.height=1100;drawRosette(rc,dim,total,TH_LIGHT,1);
+  doc.addImage(rc.toDataURL("image/png"),"PNG",(W-108)/2,131,108,108);
+  y=242;doc.setFont("helvetica","bold");doc.setFontSize(19);doc.setTextColor(...bc);doc.text(bd[1],W/2,y+5,{align:"center"});y+=9;
+  para(bd[2],{align:"center",size:10.5,w:CW-24,x:M+12,gap:3});
+  const sorted=dim.map((v,i)=>[v,i]).sort((a,b)=>b[0]-a[0]);
+  para("Mais fortes: "+sorted.slice(0,2).map(x=>DIMS[x[1]].n+" ("+x[0]+"%)").join(" e ")+".",{size:9.5,gap:.5,align:"center",w:CW-12,x:M+6});
+  para("Mais urgentes: "+sorted.slice(-3).reverse().map(x=>DIMS[x[1]].n+" ("+x[0]+"%)").join(", ")+".",{size:9.5,gap:0,align:"center",w:CW-12,x:M+6});
+  /* Perfil */
+  newPage();h2("Perfil por dimensão");
+  para("Cada dimensão vai de 0% a 100%. Abaixo de 50% indica base ainda em construção; entre 50% e 79%, trabalho consistente que precisa de refinamento; 80% ou mais, nível compatível com bancas exigentes.",{size:9,color:MUT,gap:4});
+  DIMS.forEach((d,i)=>{need(12);doc.setFont("helvetica","bold");doc.setFontSize(9.5);doc.setTextColor(...INK);doc.text(d.n,M,y+3);doc.text(dim[i]+"%",W-M,y+3,{align:"right"});
+    doc.setFillColor(...LINE);doc.roundedRect(M,y+5,CW,3.4,1.7,1.7,"F");if(dim[i]>0){doc.setFillColor(...hexRgb(DCOL[i].c));doc.roundedRect(M,y+5,Math.max(3.4,CW*dim[i]/100),3.4,1.7,1.7,"F")}y+=12.5});
+  h2("Diagnóstico e conselhos por dimensão");
+  DIMS.forEach((d,i)=>{need(22);doc.setFillColor(...hexRgb(DCOL[i].c));doc.roundedRect(M,y+.6,3.6,3.6,.8,.8,"F");doc.setFont("helvetica","bold");doc.setFontSize(10.5);doc.setTextColor(...INK);doc.text(d.n+" ("+dim[i]+"%)",M+6,y+3.8);y+=6.5;para(dtxt(i,dim[i]),{size:9.5,gap:3.5})});
+  h2("Plano de ação em 4 semanas");
+  WEEKS.forEach(w=>{const items=g.filter(x=>w[1].includes(x.q.d));need(18);doc.setFont("helvetica","bold");doc.setFontSize(11);doc.setTextColor(...INK);doc.text(w[0]+" ("+w[2]+")",M,y+4);y+=7;
+    if(!items.length)para("•  Sem pendências críticas. Refine e valide este bloco com seu orientador.",{size:9.5,x:M+2,w:CW-4,gap:2});
+    items.forEach(x=>{need(10);doc.setFillColor(...hexRgb(DCOL[x.q.d].c));doc.rect(M,y,1.3,4,"F");para(x.q.ac,{size:9.5,x:M+4,w:CW-6,gap:1.8})});y+=2});
+  h2("Suas respostas");
+  Q.forEach((q,i)=>{const v=S.ans[i]||0,lines=doc.splitTextToSize((i+1)+". "+q.q,CW-34);need(lines.length*4.4+4);
+    doc.setFillColor(...hexRgb(DCOL[q.d].c));doc.rect(M,y+.4,1.3,lines.length*4.2,"F");
+    doc.setFont("helvetica","normal");doc.setFontSize(9);doc.setTextColor(...INK);doc.text(lines,M+4,y+3);
+    doc.setFont("helvetica","bold");doc.text(v+"/4 "+LEVELS[v][0],W-M,y+3,{align:"right",maxWidth:30});
+    y+=lines.length*4.2+3});
+  h2("Referências (APA 7)");
+  usedRefs().forEach(k=>{const r=REF[k];rich([[r.a,"normal"],[r.j,"italic"],[vFull(r),"normal"]],M,CW)});
+  y+=3;para("Nota: DOIs conferidos em fontes online. Confira cada referência na fonte original e verifique a classificação dos periódicos na edição vigente do Academic Journal Guide (Chartered ABS).",{size:8.5,color:MUT});
+  const n=doc.getNumberOfPages();
+  for(let i=1;i<=n;i++){doc.setPage(i);doc.setFont("helvetica","normal");doc.setFontSize(8);doc.setTextColor(...MUT);doc.setDrawColor(...LINE);doc.line(M,H-14,W-M,H-14);doc.text(CONFIG.PROFESSOR,M,H-9);doc.text("Página "+i+" de "+n,W-M,H-9,{align:"right"})}
+  const nm=(p.nome||"estudante").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-zA-Z0-9]+/g,"_");
+  doc.save("Diagnostico_TCC_"+nm+".pdf");
+  toast("PDF gerado!");say("PDF pronto! Leve o plano de 4 semanas ao seu orientador.");anim("hop",600);
+  }catch(e){console.error(e);toast("Não foi possível gerar o PDF. Tente novamente.")}
+  btn.disabled=false;btn.textContent="Baixar relatório em PDF";
+}
+
+/* ---------- Chat do Dr. Andrezinho ---------- */
+let chatLog=[],lastCtx=null,busy=false;
+const sheet=$("#sheet"),scrim=$("#scrim"),msgs=$("#msgs");
+function chipsFor(){
+  const set=S.view==="quiz"?["Explique a pergunta","Dê um exemplo","O que seria nota 4?","Erros comuns","O que fazer se estiver baixo?","Mostre as referências","Como me avalio?"]:S.view==="result"?["Por onde começo?","Como subir minha nota?","Explique meu diagnóstico"]:["O que é este diagnóstico?","Sou de qualitativa, serve?","Quanto tempo leva?"];
+  $("#chips").innerHTML=set.map(c=>`<button class="chip" type="button">${esc(c)}</button>`).join("");
+  $("#chips").querySelectorAll(".chip").forEach(b=>b.onclick=()=>ask(b.textContent));
+}
+function addMsg(who,html){const m=document.createElement("div");m.className="m "+who;m.innerHTML=html;msgs.appendChild(m);msgs.scrollTop=msgs.scrollHeight;return m}
+function ctxKey(){return S.view==="quiz"?"q"+S.i:S.view}
+function openChat(){
+  P.chat=true;P.bub.classList.remove("on");P.el.style.visibility="hidden";
+  sheet.classList.add("on");scrim.classList.add("on");sheet.setAttribute("aria-hidden","false");
+  if(!chatLog.length){
+    addMsg("bot",`<p>Olá! Sou o <b>Dr. Andrezinho</b>, seu orientador virtual de TCC. Sigo o rigor dos periódicos de topo em Administração para ajudar você a responder com honestidade e a melhorar o trabalho.</p><p>Escolha uma opção abaixo ou escreva sua dúvida.</p>`);chatLog.push(1);
+  }
+  if(lastCtx!==ctxKey()){
+    lastCtx=ctxKey();
+    if(S.view==="quiz"){const d=DIMS[Q[S.i].d];const c=document.createElement("div");c.className="ctx";c.textContent=`Questão ${S.i+1}: ${d.n}`;msgs.appendChild(c)}
+    else if(S.view==="result"){const c=document.createElement("div");c.className="ctx";c.textContent="Seu diagnóstico";msgs.appendChild(c)}
+  }
+  chipsFor();msgs.scrollTop=msgs.scrollHeight;setTimeout(()=>$("#chatIn").focus({preventScroll:true}),350);
+}
+function closeChat(){P.chat=false;P.el.style.visibility="";sheet.classList.remove("on");scrim.classList.remove("on");sheet.setAttribute("aria-hidden","true")}
+$("#closeChat").onclick=closeChat;scrim.onclick=closeChat;
+addEventListener("keydown",e=>{if(e.key==="Escape"&&P.chat)closeChat()});
+$("#chatForm").onsubmit=e=>{e.preventDefault();const i=$("#chatIn");const t=i.value.trim();if(t){i.value="";ask(t)}};
+
+async function ask(t){
+  if(busy)return;busy=true;
+  addMsg("me",esc(t));
+  const typing=addMsg("bot typing","<i></i><i></i><i></i>");
+  let html;
+  try{html=await reply(t)}catch(e){html="<p>Tive um problema para responder agora. Tente reformular a pergunta.</p>"}
+  await new Promise(r=>setTimeout(r,450+Math.random()*350));
+  typing.remove();addMsg("bot",html);busy=false;
+}
+const P_=t=>`<p>${t}</p>`;
+async function reply(raw){
+  const t=norm(raw), q=S.view==="quiz"?Q[S.i]:null, has=re=>re.test(t);
+  if(CONFIG.AI_ENDPOINT){
+    try{const r=await fetch(CONFIG.AI_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({pergunta:raw,contexto:{questao:q&&q.q,dimensao:q&&DIMS[q.d].n,nota:q&&S.ans[S.i],perfil:{tipo:S.profile.tipo,tema:S.profile.tema}}})});
+      if(r.ok){const j=await r.json();if(j.resposta)return P_(esc(j.resposta).replace(/\n/g,"<br>"))}}catch(e){}
+  }
+  if(has(/^(oi|ola|bom dia|boa tarde|boa noite|e ai)\b/))return P_("Olá! Em que posso ajudar com o seu TCC hoje?");
+  if(has(/obrigad|valeu|brigad/))return P_("Disponha! Lembre-se: bom TCC é reescrito várias vezes. Conte comigo.");
+  if(S.view==="intro"){
+    if(has(/qualitativ|misto|revisao/))return P_("Serve, sim! As questões cobrem pesquisas quantitativas, qualitativas, mistas e revisões. Onde o rigor muda, a questão traz as duas versões.");
+    if(has(/tempo|quanto|minuto/))return P_("Cerca de 15 minutos. Seu progresso é salvo automaticamente neste aparelho.");
+    return `<p>Este diagnóstico avalia o seu TCC em 8 dimensões (problema, teoria, revisão, modelo, método, dados, ética e discussão) com base em periódicos ABS 4/4*. Ao final, você recebe um relatório em PDF com gráficos e um plano de 4 semanas.</p>`;
+  }
+  if(S.view==="result"){
+    const {dim,total}=scores(),g=gaps();
+    if(has(/por onde|comec|priorid|primeiro/)){const x=g.slice(0,3);return x.length?`<p>Comece pelo que sustenta o resto do trabalho:</p><ul>${x.map(i=>`<li><b>Questão ${i.i+1} (${esc(DIMS[i.q.d].s)}):</b> ${esc(i.q.ac)}</li>`).join("")}</ul>`:P_("Você não tem pendências críticas. Foque a leitura crítica de colegas e do orientador.")}
+    if(has(/subir|melhor|aumentar|nota/)){const d=dim.map((v,i)=>[v,i]).sort((a,b)=>a[0]-b[0])[0];return P_(`O maior ganho está em <b>${esc(DIMS[d[1]].n)}</b> (${d[0]}%). ${esc(dtxt(d[1],d[0]))} Use o plano de 4 semanas do relatório, na ordem proposta.`)}
+    return P_(`Sua maturidade geral é de <b>${total}%</b>: <b>${esc(band(total)[1])}</b>. ${esc(band(total)[2])} Role a página para ver o diagnóstico por dimensão e baixe o PDF para levar ao seu orientador.`);
+  }
+  /* Tópicos gerais (com prioridade se a pergunta for claramente sobre eles) */
+  const KB=[
+   [/lacuna/,"<p>Lacuna não é “ninguém estudou”. É uma tensão, um pressuposto questionável ou uma condição que a literatura ignora (Alvesson & Sandberg, 2011). Monte uma tabela com artigos recentes e registre, para cada um, o que ele deixa de fora.</p>"],
+   [/hipotese|proposic/,"<p>Uma boa hipótese traz direção, mecanismo e unidade de análise: “quanto maior X, maior Y, porque...”. O “porquê” vem da teoria (Bacharach, 1989).</p>"],
+   [/amostra|tamanho|respondent|saturac/,"<p>Em estudos quantitativos, justifique o tamanho da amostra com poder estatístico (ferramentas como o G*Power ajudam). No qualitativo, justifique pela saturação ou por replicação teórica (Eisenhardt, 1989).</p>"],
+   [/\babs\b|scopus|web of science|qualis|periodico|ft50/,"<p>O Academic Journal Guide (Chartered ABS) classifica periódicos de 1 a 4*. Priorize artigos de nível 3 a 4* e confirme a classificação na edição vigente. No Brasil, consulte também o Qualis da CAPES.</p>"],
+   [/plagio|chatgpt|inteligencia artificial|\bia\b/,"<p>IA pode apoiar a organização de ideias, mas você é responsável por cada afirmação. Confira se cada referência existe, cite a fonte original e declare o uso conforme a regra da sua instituição.</p>"],
+   [/orientador|banca/,"<p>Leve ao orientador uma versão curta e específica: pergunta, lacuna, contribuição e método em uma página. Reuniões objetivas rendem mais feedback.</p>"],
+   [/prazo|cronograma|tempo/,"<p>Planeje de trás para frente: defina a data de entrega, reserve duas semanas para revisão e distribua o restante entre teoria, método, coleta, análise e redação. O plano de 4 semanas do relatório ajuda.</p>"],
+   [/qualitativ/,"<p>Em pesquisa qualitativa, o rigor vem de mostrar como dados brutos viram conceitos (Gioia et al., 2013) e de relatar decisões de forma transparente (Aguinis & Solarino, 2019).</p>"],
+   [/quantitativ|survey|regressao|sem\b/,"<p>Em estudos quantitativos, planeje antes da coleta: escalas validadas, tamanho da amostra, viés de método comum e técnica de análise (Hinkin, 1998; Podsakoff et al., 2012; Hair et al., 2019).</p>"]
+  ];
+  const explicit=has(/explic|exemplo|nota 4|erro|o que fazer|referenc|como me avalio|nivel/);
+  if(!explicit||!q){for(const [re,a] of KB){if(has(re))return a}}
+  if(q){
+    const dn=DIMS[q.d].n;
+    if(has(/exemplo|modelo de|como escrev|ilustr/))return `<p><b>Exemplo:</b></p><p>${esc(q.ex)}</p>`;
+    if(has(/nota 4|nivel 4|pronto|consolid|evidenc|comprov|o que seria/))return `<p><b>Para marcar 4 (consolidado):</b></p><p>${esc(q.ev)}</p><p>Se você tem isso por escrito e já mostrou ao orientador, marque 4. Se falta evidência, marque 3.</p>`;
+    if(has(/erro|errad|evit|cuidado|armadilha/))return `<p><b>Erro comum:</b></p><p>${esc(q.er)}</p>`;
+    if(has(/o que fazer|como melhor|acao|proximo passo|baixo|ajuda para/))return `<p><b>Ação recomendada:</b></p><p>${esc(q.ac)}</p>`;
+    if(has(/referenc|apa|artigo|autor|fonte|leitura|cita/))return `<p>Leituras sugeridas para esta questão:</p>${q.r.map(k=>`<div class="rf">${esc(REF[k].a)}<i>${esc(REF[k].j)}</i>${esc(REF[k].v)}${doiLink(REF[k])}</div>`).join("")}`;
+    if(has(/como me avalio|qual nota|me dar|quanto|autoavali|nivel|marc/))return `<p>Use esta régua:</p><ul><li><b>0:</b> não comecei.</li><li><b>1:</b> tenho a ideia, sem registro escrito.</li><li><b>2:</b> há rascunho, mas falta evidência.</li><li><b>3:</b> está consistente, falta refinar e validar.</li><li><b>4:</b> ${esc(q.ev)}</li></ul><p>Na dúvida entre duas notas, marque a menor. O diagnóstico fica mais útil.</p>`;
+    if(has(/explic|entend|significa|o que e|duvida|clarific|porque|por que|import/))return `<p><b>${esc(dn)}:</b> ${esc(q.why)}</p><p>Em resumo, a banca quer ver: ${esc(q.ev.charAt(0).toLowerCase()+q.ev.slice(1))}</p>`;
+    for(const [re,a] of KB){if(has(re))return a}
+    return `<p>Posso ajudar com esta questão de <b>${esc(dn)}</b>: explicar o que ela pede, dar um exemplo, mostrar o que seria nota 4, apontar erros comuns ou sugerir ações. Toque em uma das opções abaixo.</p>`;
+  }
+  return P_("Posso ajudar com as questões do diagnóstico. Escolha uma das opções abaixo.");
+}
+
+/* ---------- Utilidades ---------- */
+function applyLogos(){document.querySelectorAll("img[data-logo]").forEach(i=>{if(!i.src||i.src.indexOf("data:")!==0)i.src=LOGO})}
+(function(){const l=document.createElement("link");l.rel="icon";l.href=LOGO;document.head.appendChild(l)})();
+addEventListener("resize",()=>{if(P.x>innerWidth-92)moveTo(innerWidth-92)});
+if(S.view==="result"&&Object.keys(S.ans).length<Q.length)S.view="quiz";
+render();
+setTimeout(()=>{P.el.style.transform=`translateX(${P.x}px)`;
+  if(S.view==="intro"){moveTo(innerWidth-100).then(()=>{say("Olá! Sou o Dr. Andrezinho. Toque em mim se precisar de ajuda.");anim("hello",2800)})}
+},400);
+setTimeout(wander,9000);
+</script>
+</body>
+</html>
